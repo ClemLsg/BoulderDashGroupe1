@@ -3,21 +3,21 @@
 Here is the document that show all our stored procedure that we are using in our Java project.
 
 
-##getMapCode
+## getMapCode
 ```sql
 SELECT id, mapCode
 FROM Maps
 WHERE Maps.id = idMap
 ```
 
-##getMapXsize
+## getMapXsize
 ```sql
 SELECT id, sizeX
 FROM Maps
 WHERE Maps.id = idMap
 ```
 
-##getMapYsize
+## getMapYsize
 ```sql
 SELECT id, sizeY
 FROM Maps
