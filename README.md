@@ -34,7 +34,9 @@ Sequences Diagram
 ### 2.3. Report
 
 Sunfire Report
+
 JXR
+
 GIT Report
 
 # 3. Boulder Dash
