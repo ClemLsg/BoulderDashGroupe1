@@ -15,15 +15,15 @@ Here is the depository of the groupe 1, for the JAVA Project " Boulder Dash ". E
 
 [Project Summary]( )
 
-### 1.2. Diagramms
+### 1.2. Diagrams
 
-Componants Diagramm
+Componants Diagram
 
-Packages Diagramm
+Packages Diagram
 
-[Class Diagramm](https://github.com/Darkdady/BoulderDashGroupe1/tree/master/Deliverables/Diagramms/Class)
+[Class Diagram](https://github.com/Darkdady/BoulderDashGroupe1/tree/master/Deliverables/Diagramms/Class)
 
-Sequences Diagramm
+Sequences Diagram
 
 ### 1.3. Report
 
