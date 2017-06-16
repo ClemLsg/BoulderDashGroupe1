@@ -8,6 +8,8 @@ package view;
  */
 public interface IView {
 
+	public void closeAll();
+	
     /**
      * Display message.
      *
@@ -15,4 +17,5 @@ public interface IView {
      *            the message
      */
     void displayMessage(String message);
+    
 }
