@@ -1,6 +1,6 @@
 # Boulder Dash Project | Group 1
 
-Here is the depository of the groupe 1, for the JAVA Project " Boulder Dash ". Every modification of the softwareneed to be upload here to allow a good project following.
+Here is the depository of the groupe 1, for the JAVA Project " Boulder Dash ". Every modification of the software need to be uploaded here to allow a good project following.
 
 
 # 1. Deliverable
@@ -21,7 +21,7 @@ Componants Diagramm
 
 Packages Diagramm
 
-Class Diagramm
+[Class Diagramm](https://github.com/Darkdady/BoulderDashGroupe1/tree/master/Deliverables/Diagramms/Class)
 
 Sequences Diagramm
 
