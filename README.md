@@ -6,8 +6,30 @@ Here is the depository of the groupe 1, for the JAVA Project " Boulder Dash ". E
 # 1. Deliverable
 
 ### 1.1. Documentation
+
+CDM
+
+Stored Procedure
+
+Javadoc
+
+Project's Summary
+
 ### 1.2. Diagramms
+
+Componants Diagramm
+
+Packages Diagramm
+
+Class Diagramm
+
+Sequences Diagramm
+
 ### 1.3. Report
+
+Sunfire Report
+JXR
+GIT Report
 
 # 2. Boulder Dash
 
