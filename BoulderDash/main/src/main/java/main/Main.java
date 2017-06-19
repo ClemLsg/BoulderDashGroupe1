@@ -13,11 +13,19 @@ public abstract class Main {
     	try {
 			test = MapDAO.getMap(1);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+    	System.out.println("");
+    	for(int j = 0; j < test.getHeight(); j++) {
+    		for(int i = 0; i < test.getWidth(); i++) {
+    			System.out.print(test.getMapCode()[j][i]);
+    		}
+    		System.out.println("");
+    	}
     	
     	System.out.println(test.getWidth());
+    	System.out.println(test.getHeight());
     }
 
 }

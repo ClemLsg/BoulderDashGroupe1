@@ -4,14 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Example;
 import model.Map;
 
 public class MapDAO extends AbstractDAO {
-	
-	public MapDAO() {
+	/*public MapDAO() {
 		
-	}
+	}*/
 	/** The sql example by id. */
 	private static String sqlGetMapCode   = "{call getMapCode(?)}";
 
@@ -21,12 +19,48 @@ public class MapDAO extends AbstractDAO {
     /** The sql all examples. */
 	private static String sqlGetMapYsize   = "{call getMapYsize(?)}";
     
+	/**
+	 * Create a new Map
+	 * @param id
+	 * 		the record id in the database
+	 * @return a new Map
+	 * @throws SQLException
+	 */
     public static Map getMap(int id) throws SQLException {
-    	final CallableStatement callStatementMapX = prepareCall(sqlGetMapXsize);
-    	String mapCode = "";
-    	int x = 0, y = 0;
+    	int x = getMapXsize(id);
+    	int y = getMapYsize(id);
+		int map[][] = new int[y][x];
+		
+		String mapCode = getMapCode(id);
+		
+        int index = 0, i = 0, j = 0;
         
-        /* Retrive MapX */
+        while(mapCode.charAt(index) != '9') {
+        	if(mapCode.charAt(index) == '8') {
+        		j++;
+        		index++;
+        		i = 0;
+        	} else {
+        		map[j][i] = Character.getNumericValue(mapCode.charAt(index));
+        		i++;
+        		index++;
+        	}
+        }
+        
+    	return new Map(x, y, map);
+    }
+    
+    /**
+     * Gets the map width
+     * @param id
+     * 		the record id in the database
+     * @return the map's width
+     * @throws SQLException
+     */
+    public static int getMapXsize(int id) throws SQLException {
+    	final CallableStatement callStatementMapX = prepareCall(sqlGetMapXsize);
+    	int x = 0;
+        
         callStatementMapX.setInt(1, id);
         if (callStatementMapX.execute()) {
             final ResultSet result = callStatementMapX.getResultSet();
@@ -36,9 +70,20 @@ public class MapDAO extends AbstractDAO {
             }
             result.close();
         }
-
+    	return x;
+    }
+    
+    /**
+     * 
+     * @param id
+     * 		the record id in database
+     * @return the map's height
+     * @throws SQLException
+     */
+    public static int getMapYsize(int id) throws SQLException {
     	final CallableStatement callStatementMapY = prepareCall(sqlGetMapYsize);
-        /* Retrive MapY */
+    	int y = 0;
+        
         callStatementMapY.setInt(1, id);
         if (callStatementMapY.execute()) {
             final ResultSet result = callStatementMapY.getResultSet();
@@ -49,10 +94,19 @@ public class MapDAO extends AbstractDAO {
             result.close();
         }
         
-		int map[][] = new int[y][x];
-
+        return y;
+    }
+    
+    /**
+     * Gets the map code
+     * @param id
+     * 		the record id in database
+     * @return the map code
+     * @throws SQLException
+     */
+    public static String getMapCode(int id) throws SQLException {
     	final CallableStatement callStatementMapCode = prepareCall(sqlGetMapCode);
-        /* Retrive MapCode */
+    	String mapCode = "";
     	callStatementMapCode.setInt(1, id);
         if (callStatementMapCode.execute()) {
             final ResultSet result = callStatementMapCode.getResultSet();
@@ -62,41 +116,7 @@ public class MapDAO extends AbstractDAO {
             }
             result.close();
         }
-        int index = 0, i = 0, j = 0;
         
-        while(mapCode.charAt(index) != '9') {
-        	if(mapCode.charAt(index) == '8') {
-        		j++;
-        		index++;
-        		i = 0;
-        	} else {
-        		map[j][i] = mapCode.charAt(index);
-        		i++;
-        		index++;
-        	}
-        }
-    	
-    	return new Map(x, y, map);
+        return mapCode;
     }
-    
-    
-    public static int[][] getMapCode(int id) throws SQLException {
-    	final CallableStatement callStatement = prepareCall(sqlGetMapCode);
-    	String mapCode;
-    	int map[][] = {{0,0,0,0}, {0,0,0,0}};
-        
-        callStatement.setInt(1, id);
-        if (callStatement.execute()) {
-            final ResultSet result = callStatement.getResultSet();
-            
-            if (result.first()) {
-                mapCode = result.getString(2);
-            }
-            result.close();
-        }
-        
-    	
-    	return map;
-    }
-
 }
