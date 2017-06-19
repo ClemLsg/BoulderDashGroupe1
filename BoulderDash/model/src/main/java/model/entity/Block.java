@@ -1,33 +1,35 @@
 package model.entity;
 
+import model.Position;
+
 public abstract class Block implements IBlock{
+	private Direction direction;
+	private Position position;
 	private static int SPEED = 2;
 	private static int WIDTH = 32;
 	private static int HEIGHT = 32;
+	
 	@Override
 	public void crush(Alive alive) {
-		// TODO Auto-generated method stub
-		
+		alive.setAlive(false);
 	}
 	@Override
 	public void slide(Direction direction) {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void fall() {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void setDirection(Direction direction) {
-		// TODO Auto-generated method stub
-		
+		this.direction = direction;
 	}
+	
 	@Override
 	public Direction getDirection() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.direction;
 	}
 	
 	public boolean isPickable(){

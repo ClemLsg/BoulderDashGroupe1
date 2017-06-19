@@ -1,9 +1,14 @@
 package model.entity;
 
+import model.Position;
+
 public interface IAlive {
-	public void xMove(Direction direction);
-	public void yMove(Direction direction);
+	public void Move(Direction direction);
 	public void die();
 	public void setDirection(Direction direction);
-	public Direction getDirection(); 
+	public Direction getDirection();
+	public Position getPosition();
+	public void setPosition(Position position);
+	public boolean isAlive();
+	public void setAlive(boolean isAlive);
 }

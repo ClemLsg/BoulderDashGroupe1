@@ -1,7 +1,7 @@
 package model.entity;
 
 public enum Direction {
-	UO,
+	UP,
 	DOWN,
 	RIGHT,
 	LEFT;
