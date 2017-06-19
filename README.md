@@ -33,7 +33,7 @@ Sequences Diagram
 
 ### 2.3. Report
 
-Sunfire Report
+Surefire Report
 
 JXR
 
