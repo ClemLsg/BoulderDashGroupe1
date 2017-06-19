@@ -31,7 +31,7 @@ public class GraphicsBuilder /*implements IGraphicsBuilder*/{
 	}
 	
 	public void drawAlive(/*IAlive alive, Graphics graphic, ImageObserver observer*/){
-		graphic.drawImage(Alive.dessin,x,y,observer);
+		graphic.drawImage(Block.getBlock,x,y,observer);
 	}
 	
 	public void drawBlock(/*IBlock block, Graphics graphic, ImageObserver observer*/){
