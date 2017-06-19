@@ -2,32 +2,22 @@ package main;
 
 import java.sql.SQLException;
 
-import controller.ControllerFacade;
-import model.ModelFacade;
-import view.ViewFacade;
+import model.Map;
+import model.dao.MapDAO;
 
-/**
- * <h1>The Class Main.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
 public abstract class Main {
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
     public static void main(final String[] args) {
-        final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
-
-        try {
-            controller.start();
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
+    	Map test = null;
+    	
+    	try {
+			test = MapDAO.getMap(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	System.out.println(test.getWidth());
     }
 
 }
