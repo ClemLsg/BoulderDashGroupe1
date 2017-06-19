@@ -6,13 +6,13 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.Observer;
 
-import view.gameframe.IGraphicsBuilder;
+//import view.gameframe.IGraphicsBuilder;
 
-public class GraphicsBuilder implements IGraphicsBuilder{
+public class GraphicsBuilder /*implements IGraphicsBuilder*/{
 	private BufferedImage texture[];
-	private BoulderDashModel boulderDashModel;
+	//private BoulderDashModel boulderDashModel;
 	
-	public GraphicsBuilder(IBoulderDashModel boulderDashModel){
+	public GraphicsBuilder(/*IBoulderDashModel boulderDashModel*/){
 		
 	}
 	
@@ -20,23 +20,25 @@ public class GraphicsBuilder implements IGraphicsBuilder{
 		
 	}
 	
-	public void getGlobalWidth(){
-		
+	public int getGlobalWidth(){
+		//return map.getWidth();
+		return (Integer) null;
 	}
 	
-	public void getGlobalHeight(){
-		
+	public int getGlobalHeight(){
+		//return map.getWidth();
+		return (Integer) null;
 	}
 	
-	public void drawAlive(IAlive alive, Graphics graphic, ImageObserver observer){
-		
+	public void drawAlive(/*IAlive alive, Graphics graphic, ImageObserver observer*/){
+		graphic.drawImage(Alive.dessin,x,y,observer);
 	}
 	
-	public void drawBlock(IBlock block, Graphics graphic, ImageObserver observer){
-		
+	public void drawBlock(/*IBlock block, Graphics graphic, ImageObserver observer*/){
+		graphic.drawImage(Block.dessin, x ,y , observer);
 	}
 	
-	public void drawBackground(ITile tile){
-		
+	public void drawBackground(/*ITile tile*/){
+		graphic.drawImage(Tile.dessin, x ,y , observer);
 	}
 }

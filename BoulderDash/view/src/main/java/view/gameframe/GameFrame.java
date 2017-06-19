@@ -7,21 +7,34 @@ import view.GraphicsBuilder;
 
 public class GameFrame extends JFrame implements KeyListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IEventPerformer eventPerformer; 
+	private boolean[] keys;
 	
-	public GameFrame(String title, int width, int height, IEventPerformer performer, GraphicsBuilder graphicBuilder){
-		
+	private JFrame frame;
+	
+	public GameFrame(String title, int width, int height/*, IEventPerformer performer, GraphicsBuilder graphicBuilder*/){
+		keys = new boolean[256];
+		frame = new JFrame(title);
+		frame.setSize(width, height);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyPressed(KeyEvent k) {
+		keys[k.getKeyCode()] = true;
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent k) {
+		keys[k.getKeyCode()] = false;
 		
 	}
 

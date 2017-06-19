@@ -6,7 +6,7 @@ import view.gameframe.IEventPerformer;
 
 public class EventPerformer implements IEventPerformer{
 	
-	public EventPerformer(IOrderPerformer orderPerformer){
+	public EventPerformer(/*IOrderPerformer orderPerformer*/){
 		
 	}
 	

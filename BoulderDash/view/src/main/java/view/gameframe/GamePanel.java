@@ -6,13 +6,16 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import jpu2016.gameframe.IGraphicsBuilder;
 import view.GraphicsBuilder;
 
 public class GamePanel extends JPanel implements Observer{
 	private Observable observable;
+	private final GraphicsBuilder graphicsBuilder;
 		
 	public GamePanel(GraphicsBuilder graphicsBuilder){
-		
+		this.graphicsBuilder = graphicsBuilder;
+		this.setDoubleBuffered(true);
 	}
 	
 	@Override
@@ -22,7 +25,7 @@ public class GamePanel extends JPanel implements Observer{
 	}
 	
 	public void paintComponent(Graphics graphic){
-		
+		this.graphicsBuilder.applyModelToGraphic(graphic, this);
 	}
 
 }
