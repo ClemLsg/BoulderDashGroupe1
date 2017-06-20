@@ -33,15 +33,7 @@ public class GraphicsBuilder implements IGraphicsBuilder{
 		return;
 	}
 	
-	public void drawAlive(Assets asset[][], Graphics graphic, ImageObserver observer, int x, int y){
-		graphic.drawImage(asset[][],x,y,observer);
-	}
-	
-	public void drawBlock(IBlock block, Graphics graphic, ImageObserver observer){
-		graphic.drawImage(Block.dessin, x ,y , observer);
-	}
-	
-	public void drawBackground(ITile tile){
-		graphic.drawImage(Tile.dessin, x ,y , observer);
+	public void drawTexture(BufferedImage asset[], Graphics graphic, ImageObserver observer, int x, int y, int index){
+		graphic.drawImage(asset[index],x,y,observer);
 	}
 }
