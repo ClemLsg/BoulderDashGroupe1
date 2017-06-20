@@ -7,16 +7,14 @@ import java.sql.SQLException;
 import model.Map;
 
 public class MapDAO extends AbstractDAO {
-	/*public MapDAO() {
-		
-	}*/
-	/** The sql example by id. */
+	
+	/** The sql get Map Code */
 	private static String sqlGetMapCode   = "{call getMapCode(?)}";
 
-    /** The sql example by name. */
+    /** The sql get Map X size. */
 	private static String sqlGetMapXsize = "{call getMapXsize(?)}";
 
-    /** The sql all examples. */
+    /** The sql get Map Y size. */
 	private static String sqlGetMapYsize   = "{call getMapYsize(?)}";
     
 	/**
@@ -29,25 +27,9 @@ public class MapDAO extends AbstractDAO {
     public static Map getMap(int id) throws SQLException {
     	int x = getMapXsize(id);
     	int y = getMapYsize(id);
-		int map[][] = new int[y][x];
-		
 		String mapCode = getMapCode(id);
-		
-        int index = 0, i = 0, j = 0;
         
-        while(mapCode.charAt(index) != '9') {
-        	if(mapCode.charAt(index) == '8') {
-        		j++;
-        		index++;
-        		i = 0;
-        	} else {
-        		map[j][i] = Character.getNumericValue(mapCode.charAt(index));
-        		i++;
-        		index++;
-        	}
-        }
-        
-    	return new Map(x, y, map);
+    	return new Map(x, y, mapCode);
     }
     
     /**
@@ -116,7 +98,6 @@ public class MapDAO extends AbstractDAO {
             }
             result.close();
         }
-        
         return mapCode;
     }
 }
