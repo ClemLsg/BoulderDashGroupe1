@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.KeyEvent;
 
+import controller.IController;
 import jpu2016.dogfight.controller.IUserOrder;
 import jpu2016.dogfight.controller.Order;
 import jpu2016.dogfight.controller.UserOrder;
@@ -11,7 +12,7 @@ import view.gameframe.IEventPerformer;
 public class EventPerformer implements IEventPerformer{
 	//private final IOrderPerformer orderPerformer;
 
-	public EventPerformer(/*final IOrderPerformer orderPerformer*/) {
+	public EventPerformer(IController boulderDashController) {
 		//this.orderPerformer = orderPerformer;
 	}
 	
