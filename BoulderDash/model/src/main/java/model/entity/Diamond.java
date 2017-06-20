@@ -5,7 +5,6 @@ public class Diamond extends Block{
 		
 	}
 	
-
 	@Override
 	public Direction getDirection() {
 		// TODO Auto-generated method stub
@@ -15,7 +14,6 @@ public class Diamond extends Block{
 	@Override
 	public boolean isPickable(){
 		return true;
-		
 	}
 
 }

@@ -9,7 +9,7 @@ import java.sql.Statement;
 /**
  * <h1>The Class BoulderDashBDDConnector.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Elian Hamon
  * @version 1.0
  */
 final class BoulderDashBDDConnector {
@@ -18,19 +18,15 @@ final class BoulderDashBDDConnector {
     private static BoulderDashBDDConnector instance;
 
     /** The login. */
-    private static String                  user     = "root";
-
+    private static String	user     = "root";
     /** The password. */
-    private static String                  password = "";
-
+    private static String	password = "root";
     /** The url. */
-    private static String                  url      = "jdbc:mysql://localhost/boulderdash?useSSL=false&serverTimezone=UTC";
-
+    private static String	url      = "jdbc:mysql://10.176.128.174/BoulderdDashGroupe1?serverTimezone=UTC";
     /** The connection. */
-    private Connection                     connection;
-
+    private Connection		connection;
     /** The statement. */
-    private Statement                      statement;
+    private Statement 		statement;
 
     /**
      * Instantiates a new boulder dash BDD connector.
@@ -40,36 +36,13 @@ final class BoulderDashBDDConnector {
     }
 
     /**
-     * Gets the single instance of BoulderDashBDDConnector.
-     *
-     * @return single instance of BoulderDashBDDConnector
-     */
-    public static BoulderDashBDDConnector getInstance() {
-        if (instance == null) {
-            setInstance(new BoulderDashBDDConnector());
-        }
-        return instance;
-    }
-
-    /**
-     * Sets the instance.
-     *
-     * @param instance
-     *            the new instance
-     */
-    private static void setInstance(final BoulderDashBDDConnector instance) {
-        BoulderDashBDDConnector.instance = instance;
-    }
-
-    /**
      * Open.
      *
      * @return true, if successful
      */
     private boolean open() {
         try {
-            this.connection = DriverManager.getConnection(BoulderDashBDDConnector.url, BoulderDashBDDConnector.user,
-                    BoulderDashBDDConnector.password);
+            this.connection = DriverManager.getConnection(BoulderDashBDDConnector.url, BoulderDashBDDConnector.user, BoulderDashBDDConnector.password);
             this.statement = this.connection.createStatement();
             return true;
         } catch (final SQLException exception) {
@@ -124,6 +97,28 @@ final class BoulderDashBDDConnector {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    /**
+     * Gets the single instance of BoulderDashBDDConnector.
+     *
+     * @return single instance of BoulderDashBDDConnector
+     */
+    public static BoulderDashBDDConnector getInstance() {
+        if (instance == null) {
+            setInstance(new BoulderDashBDDConnector());
+        }
+        return instance;
+    }
+
+    /**
+     * Sets the instance.
+     *
+     * @param instance
+     *            the new instance
+     */
+    private static void setInstance(final BoulderDashBDDConnector instance) {
+        BoulderDashBDDConnector.instance = instance;
     }
 
     /**
