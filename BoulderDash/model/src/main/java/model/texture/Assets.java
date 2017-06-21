@@ -7,8 +7,8 @@ public class Assets {
 	public static BufferedImage haut, bas, gauche, droite, background, mud, wall, rock, diamond, door, mob1, mob2;
 	private static BufferedImage spriteTab[] = new BufferedImage[8];
 	
-	public Assets(){
-		init(1);
+	public Assets(int id){
+		init(id);
 	}
 	public static void init(int idSkin){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("C:\\Users\\anton\\Documents\\GitHub\\Boulder2\\BoulderDash\\main\\src\\main\\resources\\player.png"));

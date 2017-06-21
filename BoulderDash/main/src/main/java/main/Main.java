@@ -27,7 +27,7 @@ public abstract class Main {
      * @throws SQLException 
      */
     public static void main(final String[] args) throws SQLException {
-    	IModel boulderDashModel = new BoulderDashModel();
+    	IModel boulderDashModel = new BoulderDashModel(3);
     	IController boulderDashController = new  BoulderDashController(boulderDashModel);
     	IView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel, null);
     	

@@ -21,10 +21,10 @@ public class BoulderDashModel implements IModel, IBlock, IAlive, ITile{
 	private IAlive alive[][] = new Alive[getMapXsize(3)][getMapYsize(3)];
 	private ITile tiles[][] = new Tile[getMapXsize(3)][getMapYsize(3)];
 	
-	public BoulderDashModel() throws SQLException {
-    	Assets assets = new Assets();
+	public BoulderDashModel(int id) throws SQLException {
+    	Assets assets = new Assets(id);
     	MapDAO mapDAO = new MapDAO();
-    	Map map = new Map(3);
+    	Map map = new Map(id);
     	int[][] mapcode = getMap();
     	int obj;
     	for (int j = 0; j < getMapYsize(3); j++){
