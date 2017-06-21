@@ -3,8 +3,10 @@ package model.entity;
 public class Player extends Alive{
 	public int score;
 	public int amountDiamonds;
+	private int id;
 	public Player(int id){
 		this.setAlive(true);
+		this.setId(id);
 	}
 	
 	public void dig(Direction direction){
@@ -37,6 +39,14 @@ public class Player extends Alive{
 
 	public void setAmountDiamonds(int amountDiamonds) {
 		this.amountDiamonds = amountDiamonds;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

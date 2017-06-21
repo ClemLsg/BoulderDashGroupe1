@@ -1,11 +1,9 @@
 package model.tile;
 
-import java.awt.image.BufferedImage;
-
 public class Background extends Tile{
 
-	public Background(BufferedImage texture, int id) {
-		super(texture, id);
+	public Background(int id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
 	

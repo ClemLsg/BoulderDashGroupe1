@@ -9,6 +9,7 @@ public class Alive implements IAlive {
 	private static int SPEED = 3;
 	private static int WIDTH = 32;
 	private static int HEIGHT = 32;
+	private int id;
 	
 	
 	@Override
@@ -70,6 +71,14 @@ public class Alive implements IAlive {
 
 	public static void setSPEED(int sPEED) {
 		SPEED = sPEED;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

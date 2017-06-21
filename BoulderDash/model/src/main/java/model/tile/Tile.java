@@ -1,13 +1,12 @@
 package model.tile;
 
-import java.awt.image.BufferedImage;
-
 public class Tile implements ITile{
 	public static Tile tile[];
-	private TileType tileType; 
+	private TileType tileType;
+	private int id; 
 	
-	public Tile(BufferedImage texture, int id){
-		
+	public Tile(int id){
+		this.setId(id);
 	}
 
 	@Override
@@ -21,6 +20,14 @@ public class Tile implements ITile{
 	public boolean getIsBreakable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

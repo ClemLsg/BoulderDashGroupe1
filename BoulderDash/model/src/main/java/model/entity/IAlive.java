@@ -11,4 +11,6 @@ public interface IAlive {
 	public void setPosition(Position position);
 	public boolean isAlive();
 	public void setAlive(boolean isAlive);
+	public int getId();
+	public void setId(int id);
 }
