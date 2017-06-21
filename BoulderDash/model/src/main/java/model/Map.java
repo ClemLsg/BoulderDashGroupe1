@@ -1,5 +1,9 @@
 package model;
 
+import java.sql.SQLException;
+
+import model.dao.MapDAO;
+
 public class Map {
 	/** The map id */
 	private static int id;
@@ -15,6 +19,15 @@ public class Map {
 	
 	/** the map */
 	private static int[][] map;
+	
+	public Map(int id) throws SQLException {
+		this.width = MapDAO.getMapXsize(id);
+		this.height = MapDAO.getMapYsize(id);
+		this.mapCode = MapDAO.getMapCode(id);
+		this.map = new int[height][width];
+		setMap();
+	}
+	
 	
 	/**
 	 * Instantiates a new Map
