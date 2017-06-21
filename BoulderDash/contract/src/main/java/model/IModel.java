@@ -9,5 +9,5 @@ public interface IModel {
 	int getMapYsize(int id)throws SQLException;
 	int getMapXsize(int id)throws SQLException;
     BufferedImage[] getSpriteTab();
-
+    int[][] getMap();
 }

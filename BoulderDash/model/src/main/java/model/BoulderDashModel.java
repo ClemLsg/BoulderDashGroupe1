@@ -14,11 +14,11 @@ import model.texture.Assets;
 
 public class BoulderDashModel implements IModel{
 
-    public BoulderDashModel() {
+    public BoulderDashModel() throws SQLException {
     	Assets assets = new Assets();
     	MapDAO mapDAO = new MapDAO();
+    	Map map = new Map(3);
     }
-
 
 	@Override
 	public BufferedImage[] getSpriteTab() {
@@ -40,6 +40,12 @@ public class BoulderDashModel implements IModel{
 	@Override
 	public int getMapXsize(int id) throws SQLException{
 		return MapDAO.getMapXsize(id);
+	}
+
+
+	@Override
+	public int[][] getMap() {
+		return Map.getMap();
 	}
     
 }

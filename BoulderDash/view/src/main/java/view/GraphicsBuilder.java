@@ -34,9 +34,7 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 	}
 	
 	public void drawTexture(Graphics graphic, ImageObserver observerImage, int x, int y, int index){
-		//graphic.fillOval(10, 10, 10, 10);
 		graphic.drawImage(texture[index],x,y,32,32,this);
-		//graphic.fillOval(10, 10, 10, 10);
 		System.out.println(graphic);
 	}
 
@@ -44,15 +42,12 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 	public void applyModelToGraphics(Graphics graphic, ImageObserver observerImage) throws SQLException {
 		int x = boulderDashModel.getMapXsize(3);
 		int y = boulderDashModel.getMapYsize(3);
-		String map = boulderDashModel.getMapCode(3);
+		int[][] map = boulderDashModel.getMap();
 		int count = 0;
-		/*final BufferedImage imageMobile = new BufferedImage(x, y, Transparency.TRANSLUCENT);
-		final Graphics graphicsMobile = imageMobile.getGraphics();*/
 		for (int j = 0; j < x; j++){
 			for ( int i = 0; i < y; i++){
-				char code = map.charAt(count);
-				int index = Character.getNumericValue(code);
-				drawTexture(graphic, observerImage, j*32, i*32, index);
+				drawTexture(graphic, observerImage, j*32, i*32, 0 );
+				drawTexture(graphic, observerImage, j*32, i*32, map[i][j] );
 				count++;
 			}
 		}
