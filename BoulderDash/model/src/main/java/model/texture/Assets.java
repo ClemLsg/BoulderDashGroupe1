@@ -11,13 +11,13 @@ public class Assets {
 		init(1);
 	}
 	public static void init(int idSkin){
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("C:\\Users\\Darkdady\\Documents\\Git\\BoulderDashGroupe1\\BoulderDash\\main\\src\\main\\resources\\player.png"));
+		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("C:\\Users\\anton\\Documents\\GitHub\\Boulder2\\BoulderDash\\main\\src\\main\\resources\\player.png"));
 		haut = sheet.crop(2*width, 5*height, width, height);
 		bas = sheet.crop(0, 5*height, width, height);
 		gauche = sheet.crop(3*width, 5*height, width, height);
 		droite = sheet.crop(width, 5*height, width, height);
 		
-		SpriteSheet envi = new SpriteSheet(ImageLoader.loadImage("C:\\Users\\Darkdady\\Documents\\Git\\BoulderDashGroupe1\\BoulderDash\\main\\src\\main\\resources\\block.png"));
+		SpriteSheet envi = new SpriteSheet(ImageLoader.loadImage("C:\\Users\\anton\\Documents\\GitHub\\Boulder2\\BoulderDash\\main\\src\\main\\resources\\block.png"));
 		
 		background = envi.crop(2*width, (idSkin-1)*4*height, width, height);
 		mud = envi.crop(width, (idSkin-1)*4*height, width, height);

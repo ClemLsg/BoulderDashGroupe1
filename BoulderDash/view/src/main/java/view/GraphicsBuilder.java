@@ -7,8 +7,10 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.sql.SQLException;
 
-
+import model.IBlock;
+import model.IAlive;
 import model.IModel;
+import model.ITile;
 import view.gameframe.IGraphicsBuilder;
 
 
@@ -35,17 +37,35 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 	
 	public void drawTexture(Graphics graphic, ImageObserver observerImage, int x, int y, int index){
 		graphic.drawImage(texture[index],x,y,32,32,this);
-		System.out.println(graphic);
+		//System.out.println(graphic);
 	}
 
 	@Override
 	public void applyModelToGraphics(Graphics graphic, ImageObserver observerImage) throws SQLException {
 		int x = boulderDashModel.getMapXsize(3);
 		int y = boulderDashModel.getMapYsize(3);
+		IBlock block[][] = boulderDashModel.getBlock();
+		IAlive alive[][] = boulderDashModel.getAlive();
+		ITile tile[][] = boulderDashModel.getTile();
+		//tile[3][4].setBreak(true);
+		//alive[1][1].setAlive(true);
 		for (int j = 0; j < x; j++){
 			for ( int i = 0; i < y; i++){
-				//drawTexture(graphic, observerImage, j*32, i*32, 0 );
-				//drawTexture(graphic, observerImage, j*32, i*32, map[i][j] );
+				drawTexture(graphic, observerImage, j*32, i*32, 0 );
+				//System.out.println(block[j][i]);
+				//System.out.println(alive[j][i]);
+				if(block[j][i] != null){
+					int id = block[j][i].getId();
+					drawTexture(graphic, observerImage, j*32, i*32, id );
+				}
+				if(alive[j][i] != null && alive[j][i].isAlive() == true){
+					int id = alive[j][i].getId();
+					drawTexture(graphic, observerImage, j*32, i*32, id );
+				}
+				if(tile[j][i] != null && tile[j][i].isBreak() == false){
+					int id = tile[j][i].getId();
+					drawTexture(graphic, observerImage, j*32, i*32, id );
+				}
 			}
 		}
 		

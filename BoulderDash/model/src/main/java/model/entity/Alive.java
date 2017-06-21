@@ -1,8 +1,9 @@
 package model.entity;
 
+import model.IAlive;
 import model.Position;
 
-public class Alive implements IAlive {
+public class Alive implements IAlive{
 	private Direction direction;
 	private Position position;
 	private boolean isAlive;
@@ -11,8 +12,11 @@ public class Alive implements IAlive {
 	private static int HEIGHT = 32;
 	private int id;
 	
-	
-	@Override
+	public Alive(int id) {
+		this.id = id;
+		this.setAlive(true);
+	}
+
 	public void Move(Direction direction) {
 		switch (direction){
 		case RIGHT :
@@ -30,37 +34,30 @@ public class Alive implements IAlive {
 		}
 	}
 
-	@Override
 	public void die() {
 		this.setAlive(false);
 	}
 
-	@Override
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 
-	@Override
 	public Direction getDirection() {
 		return this.direction;
 	}
 	
-	@Override
 	public Position getPosition() {
 		return position;
 	}
-
-	@Override
+	
 	public void setPosition(Position position) {
 		this.position = position;
 	}
 
-	@Override
 	public boolean isAlive() {
 		return isAlive;
 	}
 
-	@Override
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}
@@ -79,6 +76,12 @@ public class Alive implements IAlive {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public IAlive[][] getAlive() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

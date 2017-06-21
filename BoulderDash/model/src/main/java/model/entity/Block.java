@@ -1,5 +1,6 @@
 package model.entity;
 
+import model.IBlock;
 import model.Position;
 
 public abstract class Block implements IBlock{
@@ -8,26 +9,30 @@ public abstract class Block implements IBlock{
 	private static int SPEED = 2;
 	private static int WIDTH = 32;
 	private static int HEIGHT = 32;
+	int id;
 	
-	@Override
+	public Block(int id) {
+		this.setId(id);
+	}
+
 	public void crush(Alive alive) {
 		alive.setAlive(false);
 	}
-	@Override
+	
 	public void slide(Direction direction) {
 		// TODO Auto-generated method stub
 	}
-	@Override
+	
 	public void fall() {
 		// TODO Auto-generated method stub
 
 	}
-	@Override
+	
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 	
-	@Override
+	
 	public Direction getDirection() {
 		return this.direction;
 	}
@@ -44,5 +49,12 @@ public abstract class Block implements IBlock{
 		return true;
 		
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

@@ -15,11 +15,11 @@ import model.tile.*;
  * Created by Lesage Clément on 19/06/2017.
  */
 
-public class BoulderDashModel implements IModel{
+public class BoulderDashModel implements IModel, IBlock, IAlive, ITile{
 	
-	private Block blocks[][] = new Block[getMapXsize(3)][getMapYsize(3)];
-	private Alive alive[][] = new Alive[getMapXsize(3)][getMapYsize(3)];
-	private Tile tiles[][] = new Tile[getMapXsize(3)][getMapYsize(3)];
+	private IBlock blocks[][] = new Block[getMapXsize(3)][getMapYsize(3)];
+	private IAlive alive[][] = new Alive[getMapXsize(3)][getMapYsize(3)];
+	private ITile tiles[][] = new Tile[getMapXsize(3)][getMapYsize(3)];
 	
 	public BoulderDashModel() throws SQLException {
     	Assets assets = new Assets();
@@ -50,7 +50,7 @@ public class BoulderDashModel implements IModel{
 					blocks[i][j] = new Diamond(6);
 					break;
 				case 7: //player
-					alive[i][j] = new Player(6);
+					alive[i][j] = new Player(7);
 					break;
 				default :
 					tiles[i][j] = null;
@@ -91,15 +91,57 @@ public class BoulderDashModel implements IModel{
 		return Map.getMap();
 	}
 
-	public Block[][] getBlocks() {
+	@Override
+	public IBlock[][] getBlock() {
+		// TODO Auto-generated method stub
 		return blocks;
 	}
 
-	public Alive[][] getAlive() {
+	@Override
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IAlive[][] getAlive() {
+		// TODO Auto-generated method stub
 		return alive;
 	}
 
-	public Tile[][] getTiles() {
+	@Override
+	public ITile[][] getTile() {
+		// TODO Auto-generated method stub
 		return tiles;
+	}
+
+	@Override
+	public boolean isBreak() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setBreak(boolean isBreak) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isAlive() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setAlive(boolean isAlive) {
+		// TODO Auto-generated method stub
+		
 	}
 }

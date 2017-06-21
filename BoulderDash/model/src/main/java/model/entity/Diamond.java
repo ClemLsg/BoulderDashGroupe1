@@ -1,10 +1,12 @@
 package model.entity;
 
+import model.IBlock;
+
 public class Diamond extends Block{
 	private int id;
 
 	public Diamond(int id){
-		this.setId(id);
+		super(id);
 	}
 	
 	@Override
@@ -24,6 +26,12 @@ public class Diamond extends Block{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public IBlock[][] getBlock() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
