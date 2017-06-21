@@ -14,10 +14,10 @@ import model.texture.Assets;
 
 public class BoulderDashModel implements IModel{
 
-    public BoulderDashModel() throws SQLException {
-    	Assets assets = new Assets();
+    public BoulderDashModel(int id) throws SQLException {
+    	Assets assets = new Assets(id);
     	MapDAO mapDAO = new MapDAO();
-    	Map map = new Map(3);
+    	Map map = new Map(id);
     }
 
 	@Override
