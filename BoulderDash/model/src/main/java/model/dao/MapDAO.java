@@ -24,12 +24,13 @@ public class MapDAO extends AbstractDAO {
 	 * @return a new Map
 	 * @throws SQLException
 	 */
-    public static Map getMap(int id) throws SQLException {
+    public static Map createMap(int id) throws SQLException {
+    	int Id = id;
     	int x = getMapXsize(id);
     	int y = getMapYsize(id);
 		String mapCode = getMapCode(id);
         
-    	return new Map(x, y, mapCode);
+    	return new Map(id, x, y, mapCode);
     }
     
     /**
@@ -41,7 +42,7 @@ public class MapDAO extends AbstractDAO {
      */
     public static int getMapXsize(int id) throws SQLException {
     	final CallableStatement callStatementMapX = prepareCall(sqlGetMapXsize);
-    	int x = 0;
+    	int x = -1;
         
         callStatementMapX.setInt(1, id);
         if (callStatementMapX.execute()) {
@@ -64,7 +65,7 @@ public class MapDAO extends AbstractDAO {
      */
     public static int getMapYsize(int id) throws SQLException {
     	final CallableStatement callStatementMapY = prepareCall(sqlGetMapYsize);
-    	int y = 0;
+    	int y = -1;
         
         callStatementMapY.setInt(1, id);
         if (callStatementMapY.execute()) {

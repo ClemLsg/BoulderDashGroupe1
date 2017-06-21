@@ -11,7 +11,7 @@ public abstract class Main {
         Map test = null;
 
         try {
-            test = MapDAO.getMap(1);
+            test = MapDAO.createMap(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }

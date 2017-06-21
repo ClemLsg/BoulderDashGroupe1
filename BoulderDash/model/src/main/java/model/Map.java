@@ -21,6 +21,7 @@ public class Map {
 	private static int[][] map;
 	
 	public Map(int id) throws SQLException {
+		this.id = id;
 		this.width = MapDAO.getMapXsize(id);
 		this.height = MapDAO.getMapYsize(id);
 		this.mapCode = MapDAO.getMapCode(id);
@@ -38,7 +39,8 @@ public class Map {
 	 * @param mapCode
 	 * 		the mapCode of the map
 	 */
-	public Map(final int x, final int y, final String mapCode) {
+	public Map(int id, final int x, final int y, final String mapCode) {
+		this.id = id;
 		this.width = x;
 		this.height = y;
 		this.mapCode = mapCode;
@@ -116,6 +118,7 @@ public class Map {
 	 */
 	public static void setMapCode(String mapCode) {
 		Map.mapCode = mapCode;
+		setMap();
 	}
 	
 	/**

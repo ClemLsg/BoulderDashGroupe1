@@ -10,10 +10,11 @@ import org.junit.Test;
 
 public class MapTest {
 	
-	Map map;
+	static Map map;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		map = new Map(1, 4, 1, "000089");
 	}
 
 	@AfterClass
@@ -26,7 +27,6 @@ public class MapTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		map = new Map(4, 1, "000089");
 	}
 
 	@After
@@ -38,6 +38,7 @@ public class MapTest {
 	 */
 	@Test
 	public void testGetId() {
+		//this.map.setId(1);
 		assert this.map.getId() >= 1: "Error: id should be >= 1";
 	}
 
