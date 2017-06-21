@@ -1,11 +1,12 @@
 package controller;
 
+import model.IModel;
 import view.IView;
 
-public class BoulderDashController implements IOrderPerformer{
-
-	public BoulderDashController(IBoulderDashModel boulderDashModel){
-		
+public class BoulderDashController implements IOrderPerformer, IController{
+	private IModel boulderDashModel;
+	public BoulderDashController(IModel boulderDashModel){
+		this.boulderDashModel = boulderDashModel;
 	}
 	
 	@Override

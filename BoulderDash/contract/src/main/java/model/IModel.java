@@ -1,25 +1,13 @@
 package model;
 
-import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import java.sql.SQLException;
+
 
 public interface IModel {
+	String getMapCode(int id) throws SQLException;
+	int getMapYsize(int id)throws SQLException;
+	int getMapXsize(int id)throws SQLException;
+    BufferedImage[] getSpriteTab();
 
-    ArrayList getBlock();
-
-    ArrayList getAlive();
-
-    ArrayList getTile();
-
-    void addBlock(Block block);
-
-    void removeBlock(Block block);
-
-    void addAlive(Alive alive);
-
-    void removeAlive(Alive alive);
-
-    void addTile(Tile tile);
-
-    void removeTile(Tile tile);
-    
 }

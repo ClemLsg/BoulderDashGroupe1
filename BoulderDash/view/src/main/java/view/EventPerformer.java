@@ -3,9 +3,7 @@ package view;
 import java.awt.event.KeyEvent;
 
 import controller.IController;
-import jpu2016.dogfight.controller.IUserOrder;
-import jpu2016.dogfight.controller.Order;
-import jpu2016.dogfight.controller.UserOrder;
+
 //import controller.IOrderPerformer;
 import view.gameframe.IEventPerformer;
 
@@ -34,6 +32,6 @@ public class EventPerformer implements IEventPerformer{
 			default:
 				userOrder = null;
 		}
-		return userOrder;
-	}*/
+		return userOrder;*/
+	}
 }

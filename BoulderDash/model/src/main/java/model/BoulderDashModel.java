@@ -1,44 +1,45 @@
 package model;
 
-import model.entity.Alive;
-import model.entity.Block;
-import model.tile.Tile;
 
 
-import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import java.sql.SQLException;
+
+import model.dao.MapDAO;
+import model.texture.Assets;
 
 /**
  * Created by Lesage Clément on 19/06/2017.
  */
 
-public class BoulderDashModel {
+public class BoulderDashModel implements IModel{
 
     public BoulderDashModel() {
-
+    	Assets assets = new Assets();
+    	MapDAO mapDAO = new MapDAO();
     }
 
-    public void addBlock(Block block){
 
-    }
+	@Override
+	public BufferedImage[] getSpriteTab() {
+		return Assets.getSpriteTab();
+	}
 
-    public void removeBlock(Block block){
+	@Override
+	public String getMapCode(int id) throws SQLException {
+		return MapDAO.getMapCode(id);
+	}
 
-    }
 
-    public void addAlive(Alive alive){
+	@Override
+	public int getMapYsize(int id) throws SQLException{
+		return MapDAO.getMapYsize(id);
+	}
 
-    }
 
-    public void removeAlive(Alive alive){
-
-    }
-
-    public void addTile(Tile tile){
-
-    }
-
-    public void removeTile(Tile tile){
-
-    }
+	@Override
+	public int getMapXsize(int id) throws SQLException{
+		return MapDAO.getMapXsize(id);
+	}
     
 }

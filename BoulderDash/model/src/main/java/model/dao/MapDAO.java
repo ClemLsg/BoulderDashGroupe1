@@ -70,6 +70,7 @@ public class MapDAO extends AbstractDAO {
             }
             result.close();
         }
+        System.out.println(x);
     	return x;
     }
     
@@ -93,7 +94,7 @@ public class MapDAO extends AbstractDAO {
             }
             result.close();
         }
-        
+        System.out.println(y);
         return y;
     }
     
