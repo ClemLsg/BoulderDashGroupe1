@@ -42,15 +42,18 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 
 	@Override
 	public void applyModelToGraphics(Graphics graphic, ImageObserver observerImage) throws SQLException {
-		int x = boulderDashModel.getMapXsize(1);
-		int y = boulderDashModel.getMapYsize(1);
+		int x = boulderDashModel.getMapXsize(3);
+		int y = boulderDashModel.getMapYsize(3);
+		String map = boulderDashModel.getMapCode(3);
+		int count = 0;
 		/*final BufferedImage imageMobile = new BufferedImage(x, y, Transparency.TRANSLUCENT);
 		final Graphics graphicsMobile = imageMobile.getGraphics();*/
 		for (int j = 0; j < x; j++){
 			for ( int i = 0; i < y; i++){
-				//System.out.println(j);
-				//System.out.println(i);
-				drawTexture(graphic, observerImage, j*32, i*32, 1);
+				char code = map.charAt(count);
+				int index = Character.getNumericValue(code);
+				drawTexture(graphic, observerImage, j*32, i*32, index);
+				count++;
 			}
 		}
 		
