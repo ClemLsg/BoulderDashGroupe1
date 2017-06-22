@@ -2,8 +2,11 @@ package view;
 
 import java.sql.SQLException;
 import java.util.Observable;
+import java.util.Observer;
+
 import view.EventPerformer;
 import view.gameframe.GameFrame;
+import view.gameframe.GamePanel;
 
 import javax.swing.JOptionPane;
 
@@ -40,6 +43,12 @@ public class BoulderDashView implements IView, Runnable{
 
 	@Override
 	public void closeAll() {
+		
+	}
+	
+	@Override
+	public Observer getObserver(){
+		return GameFrame.getObserver();
 		
 	}
 }

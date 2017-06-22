@@ -4,7 +4,6 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,7 +19,7 @@ import model.tile.*;
 public class BoulderDashModel extends Observable implements IModel, IBlock, IAlive, ITile{
 	
 	private IBlock blocks[][] = new Block[getMapXsize(3)][getMapYsize(3)];
-	private IAlive alive[][] = new Alive[getMapXsize(3)][getMapYsize(3)];
+	private IAlive[][] alive = new Alive[getMapXsize(3)][getMapYsize(3)];
 	private ITile tiles[][] = new Tile[getMapXsize(3)][getMapYsize(3)];
 	private IAlive player;
 	private Observer observer;
@@ -30,7 +29,6 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 		Assets assets = new Assets(id);
     	MapDAO mapDAO = new MapDAO();
     	Map map = new Map(id);
-    	//this.addObserver();
     	int[][] mapcode = getMap();
     	int obj;
     	for (int j = 0; j < getMapYsize(3); j++){
@@ -65,7 +63,6 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 					alive[i][j] = null;
 					break;
 				}
-				//System.out.println(blocks[i][j]);
 			}
 		}
     }
@@ -123,7 +120,7 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	}
 	
 	@Override
-	public void setAlive(IAlive[][] alive) {
+	public void setAliveTab(IAlive[][] alive) {
 		this.alive = alive;
 	}
 
@@ -164,13 +161,14 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	}
 
 	@Override
-	public void move(Direction direction, IAlive[][] alive, int xMax, int yMax,IModel boulderDashModel) {
+	public void move(Direction direction, int xMax, int yMax,IModel boulderDashModel) {
 	
-		player.move(direction, alive, xMax, yMax, boulderDashModel);
+		player.move(direction, xMax, yMax, this);
 	}
 	
 	@Override
 	public void notifyObservers(){
+		observer.update(this, alive);
 	}
 	
 	@Override
@@ -183,4 +181,6 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }

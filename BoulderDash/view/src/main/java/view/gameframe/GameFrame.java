@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.SQLException;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ public class GameFrame extends JFrame implements KeyListener {
 	private static final long serialVersionUID = 1L;
 	private IEventPerformer eventPerformer; 
 	private boolean[] keys;
+	private static GamePanel gamePanel;
 	
 	private JFrame frame;
 	private GraphicsBuilder graphicsBuilder;
@@ -32,7 +34,7 @@ public class GameFrame extends JFrame implements KeyListener {
 		frame.addKeyListener(this);
 		this.graphicsBuilder = graphicBuilder;
 		this.eventPerformer = performer;
-		final GamePanel gamePanel = new GamePanel(graphicsBuilder, boulderDashModel);
+		gamePanel = new GamePanel(graphicsBuilder, boulderDashModel);
 		//gamePanel.setBackground(Color.BLUE);
 		gamePanel.setDoubleBuffered(true);
 		frame.setContentPane(gamePanel);
@@ -65,6 +67,11 @@ public class GameFrame extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static Observer getObserver() {
+		// TODO Auto-generated method stub
+		return gamePanel;
 	}
 
 }

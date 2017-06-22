@@ -53,12 +53,15 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 					int id = block[j][i].getId();
 					drawTexture(graphic, observerImage, j*32, i*32, id );
 				}
-				if(alive[j][i] != null && alive[j][i].isAlive() == true){
-					int id = alive[j][i].getId();
-					drawTexture(graphic, observerImage, j*32, i*32, id );
-				}
+				
 				if(tile[j][i] != null && tile[j][i].isBreak() == false){
 					int id = tile[j][i].getId();
+					drawTexture(graphic, observerImage, j*32, i*32, id );
+				}
+				
+				if(alive[j][i] != null && alive[j][i].isAlive() == true){
+					System.out.println("j : " + j + " , i : " + i);
+					int id = alive[j][i].getId();
 					drawTexture(graphic, observerImage, j*32, i*32, id );
 				}
 			}
@@ -71,6 +74,7 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 	
 	

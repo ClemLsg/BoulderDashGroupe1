@@ -14,5 +14,4 @@ public interface IModel extends IBlock, IAlive, ITile {
 	void setMoved();
 	void notifyObservers();
 	void setObserver(Observer observer);
-    
 }

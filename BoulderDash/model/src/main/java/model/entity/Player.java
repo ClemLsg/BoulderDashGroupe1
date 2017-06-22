@@ -8,6 +8,8 @@ public class Player extends Alive{
 	private int score;
 	private Direction direction;
 	private int amountDiamonds;
+	private IAlive[][] alives;
+	int count = 0;
 	public Player(int id){
 		super(id);
 		this.setAlive(true);
@@ -18,11 +20,13 @@ public class Player extends Alive{
 		this.direction = direction;
 	}
 	
-	public int getYPlayerPosition(IAlive alive[][],int x, int y){
-		for (int j = 0; j < x; j++){
-			for ( int i = 0; i < y; i++){
-				if (alive[j][i] instanceof Player){
+	public int getYPlayerPosition(IAlive[][] alive,int x, int y){
+		for (int j = 0; j < y; j++){
+			for ( int i = 0; i < x; i++){
+				if (alive[i][j] instanceof Player){
+					//System.out.println("player yi :" + j);
 					return j;
+					
 				}
 				}
 			}
@@ -30,9 +34,10 @@ public class Player extends Alive{
 	}
 	
 	public int getXPlayerPosition(IAlive[][] alive,int x, int y){
-		for (int j = 0; j < x; j++){
-			for ( int i = 0; i < y; i++){
-				if (alive[j][i] instanceof Player){
+		for (int j = 0; j < y; j++){
+			for ( int i = 0; i < x; i++){
+				if (alive[i][j] instanceof Player){
+					//System.out.println("player xi :" + i);
 					return i;
 				}
 				}
@@ -41,30 +46,36 @@ public class Player extends Alive{
 	}
 	
 	@Override
-	public void move(Direction direction,IAlive[][] alive,int xMax, int yMax, IModel boulderDashModel){
-		int y = getYPlayerPosition(alive, xMax,yMax);
+	public void move(Direction direction,int xMax, int yMax, IModel boulderDashModel){
+		this.alives = boulderDashModel.getAlive();
+		int y = getYPlayerPosition(alives, xMax,yMax);
 		System.out.println("player y :" + y);
-		int x = getXPlayerPosition(alive,xMax,yMax);
+		int x = getXPlayerPosition(alives,xMax,yMax);
 		System.out.println("player x :" + x);
 		switch (this.direction){
-		case UP:
-			alive[x][y+1] = alive[x][y];
-			alive[x][y] = null;
-			break;
 		case DOWN:
-			alive[x][y-1] = alive[x][y];
-			alive[x][y] = null;
+			alives[x][y+1] = new Player(7);
+			alives[x][y] = null;
+			count++;
+			System.out.println(count);
+			
+			break;
+		case UP:
+			alives[x][y-1] = new Player(7);
+			alives[x][y] = null;
 			break;
 		case LEFT:
-			alive[x-1][y] = alive[x][y];
-			alive[x][y] = null;
+			alives[x-1][y] = new Player(7);
+			alives[x][y] = null;
+		
 			break;
 		case RIGHT:
-			alive[x+1][y] = alive[x][y];
-			alive[x][y] = null;
+			alives[x+1][y] = new Player(7);
+			alives[x][y] = null;
+		
 			break;
 		}
-		boulderDashModel.setAlive(alive);
+		boulderDashModel.setAliveTab(alives);
 		boulderDashModel.notifyObservers();
 	} 
 	

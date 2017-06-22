@@ -30,6 +30,7 @@ public abstract class Main {
     	IModel boulderDashModel = new BoulderDashModel(3);
     	IController boulderDashController = new  BoulderDashController(boulderDashModel);
     	IView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel);
+    	boulderDashModel.setObserver(boulderDashView.getObserver());
     	boulderDashController.setViewSystem(boulderDashView);
     	boulderDashController.play();
 

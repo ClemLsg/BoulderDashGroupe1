@@ -50,4 +50,11 @@ public class GamePanel extends JPanel implements Observer{
 			}
 	}
 
+	public Observer getObserver() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+
 }

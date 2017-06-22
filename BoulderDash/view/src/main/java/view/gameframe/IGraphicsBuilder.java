@@ -5,6 +5,8 @@ import java.awt.image.ImageObserver;
 import java.sql.SQLException;
 import java.util.Observer;
 
+import model.IModel;
+
 public interface IGraphicsBuilder {
 	
 	public void getGlobalWidth();

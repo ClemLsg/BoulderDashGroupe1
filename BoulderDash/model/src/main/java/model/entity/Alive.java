@@ -58,11 +58,11 @@ public class Alive implements IAlive{
 	}
 
 	@Override
-	public void move(Direction direction, IAlive[][] alive, int xMax, int yMax,IModel boulderDashModel) {
+	public void move(Direction direction, int xMax, int yMax,IModel boulderDashModel) {
 	}
 
 	@Override
-	public void setAlive(IAlive[][] alive) {
+	public void setAliveTab(IAlive[][] alive) {
 		// TODO Auto-generated method stub
 		
 	}
