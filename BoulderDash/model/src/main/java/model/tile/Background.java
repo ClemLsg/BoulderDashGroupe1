@@ -8,7 +8,8 @@ public class Background extends Tile{
 	}
 	
 	@Override
-	public boolean getIsSolid(){
+	public boolean getIsSolid() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 	

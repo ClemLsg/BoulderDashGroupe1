@@ -12,7 +12,11 @@ public interface IAlive {
 	public int getId();
 	public void setId(int id);
 	IAlive[][] getAlive();
+	ITile[][] getTile();
+	IBlock[][] getBlock();
 	void setDirection(Direction direction);
 	void move(Direction direction, int xMax, int yMax,IModel boulderDashModel);
 	void setAliveTab(IAlive[][] alive);
+	void setTiles(ITile[][] tiles);
+	void setBlock(IBlock[][] block);
 }

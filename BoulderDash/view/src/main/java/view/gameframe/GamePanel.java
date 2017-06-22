@@ -39,8 +39,6 @@ public class GamePanel extends JPanel implements Observer{
 	}
 	
 	public void paintComponent(Graphics graphic){
-		System.out.println("paint");
-		System.out.println(graphic);
 		
 			try {
 				this.graphicsBuilder.applyModelToGraphics(graphic, this);

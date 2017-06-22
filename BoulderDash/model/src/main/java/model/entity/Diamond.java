@@ -20,6 +20,12 @@ public class Diamond extends Block{
 	public boolean isPickable(){
 		return true;
 	}
+	
+	@Override
+	public boolean isMovable(){
+		return false;
+		
+	}
 
 	public int getId() {
 		return id;

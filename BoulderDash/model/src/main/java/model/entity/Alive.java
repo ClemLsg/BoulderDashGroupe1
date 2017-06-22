@@ -2,7 +2,9 @@ package model.entity;
 
 import model.Direction;
 import model.IAlive;
+import model.IBlock;
 import model.IModel;
+import model.ITile;
 import model.Position;
 
 public class Alive implements IAlive{
@@ -63,6 +65,30 @@ public class Alive implements IAlive{
 
 	@Override
 	public void setAliveTab(IAlive[][] alive) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ITile[][] getTile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IBlock[][] getBlock() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setTiles(ITile[][] tiles) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBlock(IBlock[][] block) {
 		// TODO Auto-generated method stub
 		
 	}

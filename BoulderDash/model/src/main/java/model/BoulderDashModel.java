@@ -18,9 +18,9 @@ import model.tile.*;
 
 public class BoulderDashModel extends Observable implements IModel, IBlock, IAlive, ITile{
 	
-	private IBlock blocks[][] = new Block[getMapXsize(3)][getMapYsize(3)];
-	private IAlive[][] alive = new Alive[getMapXsize(3)][getMapYsize(3)];
-	private ITile tiles[][] = new Tile[getMapXsize(3)][getMapYsize(3)];
+	private IBlock blocks[][] = new Block[getMapXsize(1)][getMapYsize(1)];
+	private IAlive[][] alive = new Alive[getMapXsize(1)][getMapYsize(1)];
+	private ITile tiles[][] = new Tile[getMapXsize(1)][getMapYsize(1)];
 	private IAlive player;
 	private Observer observer;
 	
@@ -31,8 +31,8 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
     	Map map = new Map(id);
     	int[][] mapcode = getMap();
     	int obj;
-    	for (int j = 0; j < getMapYsize(3); j++){
-			for ( int i = 0; i < getMapXsize(3); i++){
+    	for (int j = 0; j < getMapYsize(1); j++){
+			for ( int i = 0; i < getMapXsize(1); i++){
 				obj = mapcode[j][i];
 				switch(obj){
 				case 0: //background
@@ -129,6 +129,11 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 		// TODO Auto-generated method stub
 		return tiles;
 	}
+	
+	@Override
+	public void setTiles(ITile[][] tiles) {
+		this.tiles = tiles;
+	}
 
 	@Override
 	public boolean isBreak() {
@@ -169,6 +174,8 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	@Override
 	public void notifyObservers(){
 		observer.update(this, alive);
+		observer.update(this, tiles);
+		observer.update(this, blocks);
 	}
 	
 	@Override
@@ -180,6 +187,36 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	public void setMoved() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void setBlock(IBlock[][] block) {
+		this.blocks = block;
+		
+	}
+
+	@Override
+	public boolean getIsSolid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean getIsBreakable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isPickable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMovable() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

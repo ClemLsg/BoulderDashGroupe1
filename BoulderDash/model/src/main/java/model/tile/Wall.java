@@ -7,6 +7,11 @@ public class Wall extends Tile{
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
+	public boolean getIsSolid() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 
 }

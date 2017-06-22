@@ -12,7 +12,7 @@ public class Tile implements ITile{
 		this.setId(id);
 		this.setBreak(false);
 	}
-
+	
 	public boolean getIsSolid() {
 		// TODO Auto-generated method stub
 		return true;

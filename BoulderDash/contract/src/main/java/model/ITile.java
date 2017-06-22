@@ -13,5 +13,9 @@ public interface ITile {
 	boolean isBreak();
 	
 	void setBreak(boolean isBreak);
+	
+	boolean getIsSolid();
+	
+	boolean getIsBreakable();
 
 }

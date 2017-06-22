@@ -41,8 +41,8 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 
 	@Override
 	public void applyModelToGraphics(Graphics graphic, ImageObserver observerImage) throws SQLException {
-		int x = boulderDashModel.getMapXsize(3);
-		int y = boulderDashModel.getMapYsize(3);
+		int x = boulderDashModel.getMapXsize(1);
+		int y = boulderDashModel.getMapYsize(1);
 		IBlock block[][] = boulderDashModel.getBlock();
 		IAlive alive[][] = boulderDashModel.getAlive();
 		ITile tile[][] = boulderDashModel.getTile();

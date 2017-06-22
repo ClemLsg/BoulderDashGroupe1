@@ -15,6 +15,16 @@ public class Rock extends Block{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public boolean isPickable(){
+		return false;
+	}
+	
+	@Override
+	public boolean isMovable(){
+		return true;
+	}
 
 	public int getId() {
 		return id;

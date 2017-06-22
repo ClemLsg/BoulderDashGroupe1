@@ -11,4 +11,6 @@ public interface IBlock {
 	public Direction getDirection();*/
 	IBlock[][] getBlock();
 	int getId();
+	boolean isPickable();
+	boolean isMovable();
 }
