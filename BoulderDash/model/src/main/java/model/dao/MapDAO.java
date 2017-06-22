@@ -29,7 +29,7 @@ public class MapDAO extends AbstractDAO {
     	int y = getMapYsize(id);
 		String mapCode = getMapCode(id);
         
-    	return new Map(x, y, mapCode);
+    	return new Map(id, x, y, mapCode);
     }
     
     /**

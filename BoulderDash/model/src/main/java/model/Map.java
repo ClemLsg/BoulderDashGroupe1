@@ -26,10 +26,12 @@ public class Map {
 	 * 		the width of the map
 	 * @param y
 	 * 		the height of the map
+	 * @param i 
 	 * @param mapCode
 	 * 		the mapCode of the map
 	 */
-	public Map(final int x, final int y, final String mapCode) {
+	public Map(final int id,final int x, final int y, final String mapCode) {
+		this.id = id;
 		this.width = x;
 		this.height = y;
 		this.mapCode = mapCode;
@@ -38,12 +40,13 @@ public class Map {
 	}
 	
 	 public Map(int id) throws SQLException { 
-		    this.width = MapDAO.getMapXsize(id); 
-		    this.height = MapDAO.getMapYsize(id); 
-		    this.mapCode = MapDAO.getMapCode(id); 
-		    this.map = new int[height][width]; 
-		    setMap(); 
-		  } 
+		 this.id = id;
+		 this.width = MapDAO.getMapXsize(id); 
+		 this.height = MapDAO.getMapYsize(id); 
+		 this.mapCode = MapDAO.getMapCode(id); 
+		 this.map = new int[height][width]; 
+		 setMap(); 
+	} 
 	
 	/**
 	 * Gets the view
