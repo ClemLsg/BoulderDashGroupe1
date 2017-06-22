@@ -1,5 +1,6 @@
 package model.entity;
 
+import model.Direction;
 import model.IBlock;
 import model.Position;
 

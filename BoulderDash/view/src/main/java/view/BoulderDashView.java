@@ -8,6 +8,7 @@ import view.gameframe.GameFrame;
 import javax.swing.JOptionPane;
 
 import controller.IController;
+import controller.IOrderPerformer;
 import model.IModel;
 
 public class BoulderDashView implements IView, Runnable{
@@ -17,14 +18,14 @@ public class BoulderDashView implements IView, Runnable{
 	private IController boulderDashController;
 	private IModel boulderDashModel;
 	
-	public BoulderDashView(IController boulderDashController, IModel boulderDashModel, Observable observable) throws SQLException{
+	public BoulderDashView(IController boulderDashController, IModel boulderDashModel) throws SQLException{
 		this.boulderDashController= boulderDashController;
 		this.boulderDashModel = boulderDashModel;
 		EventPerformer eventPerformer = new EventPerformer(boulderDashController);
 		//JOptionPane.showMessageDialog(null, "test de méthode");
 		
 		graphicsBuilder = new GraphicsBuilder(boulderDashModel);
-		GameFrame frame = new GameFrame("test", 640,480, eventPerformer, graphicsBuilder);
+		GameFrame frame = new GameFrame("test", 640,480, eventPerformer, graphicsBuilder, boulderDashModel);
 	}
 	
 	public void run(){
@@ -39,7 +40,6 @@ public class BoulderDashView implements IView, Runnable{
 
 	@Override
 	public void closeAll() {
-		// TODO Auto-generated method stub
 		
 	}
 }

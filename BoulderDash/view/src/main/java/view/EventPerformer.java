@@ -1,37 +1,40 @@
 package view;
 
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 import controller.IController;
-
-//import controller.IOrderPerformer;
+import controller.IUserOrder;
 import view.gameframe.IEventPerformer;
 
-public class EventPerformer implements IEventPerformer{
-	//private final IOrderPerformer orderPerformer;
+class EventPerformer implements IEventPerformer {
+	private final IController boulderDashController;
 
-	public EventPerformer(IController boulderDashController) {
-		//this.orderPerformer = orderPerformer;
+	public EventPerformer(final IController boulderDashController) {
+		this.boulderDashController = boulderDashController;
 	}
-	
-	public void eventPerform(KeyEvent keyCode){
-		/*IUserOrder userOrder;
+	@Override
+	public void eventPerform(final KeyEvent keyCode) throws SQLException {
+		final IUserOrder userOrder = this.keyCodeToUserOrder(keyCode.getKeyCode());
+		if (userOrder != null) {
+			//System.out.println(userOrder);
+			this.boulderDashController.orderPerform(userOrder);
+		}
+	}
+
+	private IUserOrder keyCodeToUserOrder(final int keyCode) {
+		IUserOrder[] userOrder = boulderDashController.getUserOrder();
+		
 		switch (keyCode) {
 			case KeyEvent.VK_UP:
-				userOrder = new UserOrder(Order.UP);
-				break;
+				return userOrder[0];
 			case KeyEvent.VK_RIGHT:
-				userOrder = new UserOrder(Order.RIGHT);
-				break;
+				return userOrder[1];
 			case KeyEvent.VK_DOWN:
-				userOrder = new UserOrder(Order.DOWN);
-				break;
+				return userOrder[3];
 			case KeyEvent.VK_LEFT:
-				userOrder = new UserOrder(Order.LEFT);
-				break;
-			default:
-				userOrder = null;
+				return userOrder[2];
 		}
-		return userOrder;*/
+		return null;
 	}
 }

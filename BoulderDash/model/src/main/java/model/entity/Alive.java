@@ -1,15 +1,13 @@
 package model.entity;
 
+import model.Direction;
 import model.IAlive;
+import model.IModel;
 import model.Position;
 
 public class Alive implements IAlive{
 	private Direction direction;
-	private Position position;
 	private boolean isAlive;
-	private static int SPEED = 3;
-	private static int WIDTH = 32;
-	private static int HEIGHT = 32;
 	private int id;
 	
 	public Alive(int id) {
@@ -18,71 +16,58 @@ public class Alive implements IAlive{
 	}
 
 	public void Move(Direction direction) {
-		switch (direction){
-		case RIGHT :
-			this.position.setX(this.position.getX() + Alive.getSPEED());
-			break;
-		case LEFT:
-			this.position.setX(this.position.getX() - Alive.getSPEED());
-			break;
-		case UP :
-			this.position.setY(this.position.getY() - Alive.getSPEED());
-			break;
-		case DOWN:
-			this.position.setY(this.position.getY() + Alive.getSPEED());
-			break;
-		}
 	}
 
 	public void die() {
 		this.setAlive(false);
 	}
-
+	
+	@Override
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
-
+	
 	public Direction getDirection() {
 		return this.direction;
 	}
 	
-	public Position getPosition() {
-		return position;
-	}
-	
-	public void setPosition(Position position) {
-		this.position = position;
-	}
-
+	@Override
 	public boolean isAlive() {
 		return isAlive;
 	}
 
+	@Override
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}
 
-	public static int getSPEED() {
-		return SPEED;
-	}
 
-	public static void setSPEED(int sPEED) {
-		SPEED = sPEED;
-	}
-
+	@Override
 	public int getId() {
 		return id;
 	}
-
+	
+	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	@Override
 	public IAlive[][] getAlive() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void move(Direction direction, IAlive[][] alive, int xMax, int yMax,IModel boulderDashModel) {
+	}
+
+	@Override
+	public void setAlive(IAlive[][] alive) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 	
 	

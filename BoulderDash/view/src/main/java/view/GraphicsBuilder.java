@@ -37,7 +37,6 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 	
 	public void drawTexture(Graphics graphic, ImageObserver observerImage, int x, int y, int index){
 		graphic.drawImage(texture[index],x,y,32,32,this);
-		//System.out.println(graphic);
 	}
 
 	@Override
@@ -47,13 +46,9 @@ public class GraphicsBuilder implements IGraphicsBuilder, ImageObserver{
 		IBlock block[][] = boulderDashModel.getBlock();
 		IAlive alive[][] = boulderDashModel.getAlive();
 		ITile tile[][] = boulderDashModel.getTile();
-		//tile[3][4].setBreak(true);
-		//alive[1][1].setAlive(true);
 		for (int j = 0; j < x; j++){
 			for ( int i = 0; i < y; i++){
 				drawTexture(graphic, observerImage, j*32, i*32, 0 );
-				//System.out.println(block[j][i]);
-				//System.out.println(alive[j][i]);
 				if(block[j][i] != null){
 					int id = block[j][i].getId();
 					drawTexture(graphic, observerImage, j*32, i*32, id );

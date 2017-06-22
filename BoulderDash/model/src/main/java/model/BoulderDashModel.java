@@ -5,6 +5,8 @@ package model;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import model.dao.MapDAO;
 import model.entity.*;
@@ -15,16 +17,20 @@ import model.tile.*;
  * Created by Lesage Clément on 19/06/2017.
  */
 
-public class BoulderDashModel implements IModel, IBlock, IAlive, ITile{
+public class BoulderDashModel extends Observable implements IModel, IBlock, IAlive, ITile{
 	
 	private IBlock blocks[][] = new Block[getMapXsize(3)][getMapYsize(3)];
 	private IAlive alive[][] = new Alive[getMapXsize(3)][getMapYsize(3)];
 	private ITile tiles[][] = new Tile[getMapXsize(3)][getMapYsize(3)];
+	private IAlive player;
+	private Observer observer;
 	
 	public BoulderDashModel(int id) throws SQLException {
-    	Assets assets = new Assets(id);
+    	
+		Assets assets = new Assets(id);
     	MapDAO mapDAO = new MapDAO();
     	Map map = new Map(id);
+    	//this.addObserver();
     	int[][] mapcode = getMap();
     	int obj;
     	for (int j = 0; j < getMapYsize(3); j++){
@@ -51,6 +57,7 @@ public class BoulderDashModel implements IModel, IBlock, IAlive, ITile{
 					break;
 				case 7: //player
 					alive[i][j] = new Player(7);
+					player = alive[i][j];
 					break;
 				default :
 					tiles[i][j] = null;
@@ -114,6 +121,11 @@ public class BoulderDashModel implements IModel, IBlock, IAlive, ITile{
 		// TODO Auto-generated method stub
 		return alive;
 	}
+	
+	@Override
+	public void setAlive(IAlive[][] alive) {
+		this.alive = alive;
+	}
 
 	@Override
 	public ITile[][] getTile() {
@@ -141,6 +153,33 @@ public class BoulderDashModel implements IModel, IBlock, IAlive, ITile{
 
 	@Override
 	public void setAlive(boolean isAlive) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDirection(Direction direction) {
+	
+		player.setDirection(direction);
+	}
+
+	@Override
+	public void move(Direction direction, IAlive[][] alive, int xMax, int yMax,IModel boulderDashModel) {
+	
+		player.move(direction, alive, xMax, yMax, boulderDashModel);
+	}
+	
+	@Override
+	public void notifyObservers(){
+	}
+	
+	@Override
+	public void setObserver(Observer observer){
+		this.observer = observer;
+	}
+
+	@Override
+	public void setMoved() {
 		// TODO Auto-generated method stub
 		
 	}

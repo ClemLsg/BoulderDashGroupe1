@@ -2,6 +2,7 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
+import java.util.Observer;
 
 
 public interface IModel extends IBlock, IAlive, ITile {
@@ -10,4 +11,8 @@ public interface IModel extends IBlock, IAlive, ITile {
 	int getMapXsize(int id)throws SQLException;
     BufferedImage[] getSpriteTab();
     int[][] getMap();
+	void setMoved();
+	void notifyObservers();
+	void setObserver(Observer observer);
+    
 }

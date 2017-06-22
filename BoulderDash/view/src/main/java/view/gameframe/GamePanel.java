@@ -8,25 +8,29 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-
+import model.IModel;
 import view.gameframe.IGraphicsBuilder;
 
 public class GamePanel extends JPanel implements Observer{
 	private static final long serialVersionUID = -4968076450158743017L;
-	private Observable observable;
 	private final IGraphicsBuilder graphicsBuilder;
 		
-	public GamePanel(IGraphicsBuilder graphicsBuilder){
+	public GamePanel(IGraphicsBuilder graphicsBuilder, IModel boulderDashModel){
 		this.graphicsBuilder = graphicsBuilder;
 		this.setDoubleBuffered(true);
 		System.out.println("Game Panel");
 		//obs = new ImageObserver();
 		//Graphics graphic = null;
 		this.setBackground(Color.GREEN);
+		boulderDashModel.setObserver(this);
 		//paintComponent(this.getGraphics());
 		
 	}
-	
+
+	public void perfom(){
+		this.validate();
+		this.repaint();
+	}
 	@Override
 	public void update(Observable observable, Object obj) {
 		this.validate();
