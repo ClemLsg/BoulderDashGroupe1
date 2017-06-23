@@ -37,7 +37,7 @@ Surefire Report
 
 JXR
 
-GIT Report
+[GIT Report](https://github.com/Darkdady/BoulderDashGroupe1/blob/master/Deliverables/GitReport.md)
 
 # 3. Boulder Dash
 
