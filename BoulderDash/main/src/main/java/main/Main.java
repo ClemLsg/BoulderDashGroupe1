@@ -4,11 +4,9 @@ import java.sql.SQLException;
 
 import controller.BoulderDashController;
 import view.BoulderDashView;
-
 import controller.IController;
 import model.BoulderDashModel;
 import model.IModel;
-import model.dao.MapDAO;
 import view.IView;
 
 /**
@@ -30,11 +28,6 @@ public abstract class Main {
     	IModel boulderDashModel = new BoulderDashModel(3);
     	IController boulderDashController = new  BoulderDashController(boulderDashModel);
     	IView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel);
-    	boulderDashModel.setObserver(boulderDashView.getObserver());
-    	boulderDashController.setViewSystem(boulderDashView);
-    	//boulderDashController.play();
-
-       
+    	boulderDashModel.setObserver(boulderDashView.getObserver()); 
     }
-
 }

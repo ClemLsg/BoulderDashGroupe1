@@ -2,19 +2,14 @@ package controller;
 
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import model.Direction;
 import model.IAlive;
 import model.IBlock;
 import model.IModel;
 import model.ITile;
-import view.IView;
-import view.IViewSystem;
 
 public class BoulderDashController implements IOrderPerformer, IController{
 	private IModel boulderDashModel;
-	private IViewSystem	viewSystem;
 	private IUserOrder userOrder[] = new IUserOrder[4];
 	private IAlive[][] alives;
 	
@@ -74,13 +69,15 @@ public class BoulderDashController implements IOrderPerformer, IController{
 	}
 
 	@Override
-	public synchronized void setViewSystem(IView boulderDashView) {
-		this.viewSystem = viewSystem;
-		
-	}
-	
-	@Override
 	public IUserOrder[] getUserOrder() {
 		return userOrder;
+	}
+
+	public IAlive[][] getAlives() {
+		return alives;
+	}
+
+	public void setAlives(IAlive[][] alives) {
+		this.alives = alives;
 	}
 }

@@ -3,9 +3,6 @@ package view.gameframe;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import java.sql.SQLException;
-import java.util.Observer;
-
-import model.IModel;
 
 public interface IGraphicsBuilder {
 	

@@ -1,7 +1,5 @@
 package model.entity;
 
-import java.util.Random;
-
 import model.Direction;
 import model.IAlive;
 import model.IBlock;

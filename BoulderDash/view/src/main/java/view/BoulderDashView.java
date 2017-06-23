@@ -1,17 +1,11 @@
 package view;
 
 import java.sql.SQLException;
-import java.util.Observable;
 import java.util.Observer;
-
 import view.EventPerformer;
 import view.gameframe.GameFrame;
-import view.gameframe.GamePanel;
-
 import javax.swing.JOptionPane;
-
 import controller.IController;
-import controller.IOrderPerformer;
 import model.IModel;
 
 public class BoulderDashView implements IView, Runnable{
@@ -20,15 +14,14 @@ public class BoulderDashView implements IView, Runnable{
 	private GraphicsBuilder graphicsBuilder;
 	private IController boulderDashController;
 	private IModel boulderDashModel;
+	private GameFrame frame;
 	
 	public BoulderDashView(IController boulderDashController, IModel boulderDashModel) throws SQLException{
-		this.boulderDashController= boulderDashController;
-		this.boulderDashModel = boulderDashModel;
+		this.setBoulderDashController(boulderDashController);
+		this.setBoulderDashModel(boulderDashModel);
 		EventPerformer eventPerformer = new EventPerformer(boulderDashController);
-		//JOptionPane.showMessageDialog(null, "test de méthode");
-		
 		graphicsBuilder = new GraphicsBuilder(boulderDashModel);
-		GameFrame frame = new GameFrame("Boulder Dash", boulderDashModel.getMapXsize(boulderDashModel.getIdMap())*32,(boulderDashModel.getMapYsize(boulderDashModel.getIdMap())+1)*32, eventPerformer, graphicsBuilder, boulderDashModel);
+		setFrame(new GameFrame("Boulder Dash", boulderDashModel.getMapXsize(boulderDashModel.getIdMap())*32,(boulderDashModel.getMapYsize(boulderDashModel.getIdMap())+1)*32, eventPerformer, graphicsBuilder, boulderDashModel));
 		
 	}
 	
@@ -57,5 +50,37 @@ public class BoulderDashView implements IView, Runnable{
 	public Observer getObserver(){
 		return GameFrame.getObserver();
 		
+	}
+
+	public EventPerformer getEventPerformer() {
+		return eventPerformer;
+	}
+
+	public void setEventPerformer(EventPerformer eventPerformer) {
+		this.eventPerformer = eventPerformer;
+	}
+
+	public IController getBoulderDashController() {
+		return boulderDashController;
+	}
+
+	public void setBoulderDashController(IController boulderDashController) {
+		this.boulderDashController = boulderDashController;
+	}
+
+	public IModel getBoulderDashModel() {
+		return boulderDashModel;
+	}
+
+	public void setBoulderDashModel(IModel boulderDashModel) {
+		this.boulderDashModel = boulderDashModel;
+	}
+
+	public GameFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(GameFrame frame) {
+		this.frame = frame;
 	}
 }

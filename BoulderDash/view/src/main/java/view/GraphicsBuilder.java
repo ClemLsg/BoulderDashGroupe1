@@ -2,18 +2,14 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 import model.IBlock;
 import model.IAlive;
 import model.IModel;
 import model.ITile;
-import view.gameframe.GameFrame;
 import view.gameframe.IGraphicsBuilder;
 
 

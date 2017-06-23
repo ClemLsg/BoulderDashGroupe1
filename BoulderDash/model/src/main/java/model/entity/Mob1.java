@@ -1,11 +1,6 @@
 package model.entity;
 
-import java.util.Random;
-
-import model.IAlive;
-import model.IBlock;
 import model.IModel;
-import model.ITile;
 
 public class Mob1 extends Mob {
 	

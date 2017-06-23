@@ -1,9 +1,7 @@
 package model.entity;
 
-import model.IAlive;
-import model.IBlock;
 import model.IModel;
-import model.ITile;
+
 
 public class Mob2 extends Mob {
 	public Mob2(int id){

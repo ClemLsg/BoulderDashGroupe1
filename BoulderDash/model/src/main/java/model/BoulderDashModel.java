@@ -34,7 +34,7 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	
 	
 	public BoulderDashModel(int id) throws SQLException {
-		logo = new ImageIcon("C:\\Users\\Darkdady\\Documents\\Git\\BoulderDashGroupe1\\BoulderDash\\main\\src\\main\\resources\\boulder-dash-logo.png");
+		logo = new ImageIcon("C:\\Users\\anton\\Documents\\GitHub\\Boulder2\\BoulderDash\\main\\src\\main\\resources\\boulder-dash-logo.png");
     	
 		this.setIdMap(id);
 		blocks = new Block[getMapXsize(id)][getMapYsize(id)];
@@ -64,7 +64,7 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 					 switch(randomNum){
 					 case 0 :
 						 alive[i][j] = new Mob1(3);
-						 mob = alive[i][j];
+						 setMob(alive[i][j]);
 						 break;
 					 case 1 :
 						 alive[i][j] = new Mob2(8);
@@ -268,5 +268,11 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 					}
 				}
 			}
+	}
+	public IAlive getMob() {
+		return mob;
+	}
+	public void setMob(IAlive mob) {
+		this.mob = mob;
 	}
 }
