@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/contract/target/classes;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/controller/target/classes;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/model/target/classes;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/view/target/classes;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/main/target/classes;C:/Users/Elian/.m2/repository/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/contract/src/main/java;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/contract/target/generated-sources/annotations;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/controller/src/main/java;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/controller/target/generated-sources/annotations;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/model/src/main/java;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/model/target/generated-sources/annotations;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/view/src/main/java;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/view/target/generated-sources/annotations;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/main/src/main/java;C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/main/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2017. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'boulderdash 0.0.1-SNAPSHOT API'
+-linkoffline
+'http://docs.oracle.com/javase/8/docs/api' 'C:/Users/Elian/git/BoulderDashGroupe1/BoulderDash/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'boulderdash 0.0.1-SNAPSHOT API'
