@@ -14,7 +14,7 @@ import view.gameframe.IGraphicsBuilder;
 public class GamePanel extends JPanel implements Observer{
 	private static final long serialVersionUID = -4968076450158743017L;
 	private final IGraphicsBuilder graphicsBuilder;
-		
+
 	public GamePanel(IGraphicsBuilder graphicsBuilder, IModel boulderDashModel){
 		this.graphicsBuilder = graphicsBuilder;
 		this.setDoubleBuffered(true);
@@ -24,7 +24,11 @@ public class GamePanel extends JPanel implements Observer{
 		this.setBackground(Color.GREEN);
 		boulderDashModel.setObserver(this);
 		//paintComponent(this.getGraphics());
-		
+
+	}
+
+	public GamePanel() {
+		graphicsBuilder = null;
 	}
 
 	public void perfom(){
@@ -35,11 +39,11 @@ public class GamePanel extends JPanel implements Observer{
 	public void update(Observable observable, Object obj) {
 		this.validate();
 		this.repaint();
-		
+
 	}
-	
+
 	public void paintComponent(Graphics graphic){
-		
+
 			try {
 				this.graphicsBuilder.applyModelToGraphics(graphic, this);
 			} catch (SQLException e) {
