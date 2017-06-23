@@ -1,0 +1,14 @@
+model\entity\MobTest.class
+model\tile\MudTest.class
+model\entity\RockTest.class
+model\entity\Mob2Test.class
+model\tile\BackgroundTest.class
+model\entity\DiamondTest.class
+model\entity\AliveTest.class
+model\MapTest.class
+model\dao\MapDAOTest.class
+model\tile\WallTest.class
+model\tile\TileTest.class
+model\BoulderDashModelTest.class
+model\entity\Mob1Test.class
+model\tile\DoorTest.class

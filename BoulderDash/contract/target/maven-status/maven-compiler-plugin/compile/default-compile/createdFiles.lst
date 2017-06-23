@@ -1,0 +1,12 @@
+model\IAlive.class
+model\Example.class
+model\IModel.class
+controller\Order.class
+controller\IUserOrder.class
+model\ITile.class
+model\IBlock.class
+view\IView.class
+controller\IController.class
+view\IViewSystem.class
+controller\IOrderPerformer.class
+model\Direction.class
