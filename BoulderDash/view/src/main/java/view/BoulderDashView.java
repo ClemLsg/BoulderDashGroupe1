@@ -25,7 +25,7 @@ public class BoulderDashView implements IView, Runnable{
 		this.boulderDashController= boulderDashController;
 		this.boulderDashModel = boulderDashModel;
 		EventPerformer eventPerformer = new EventPerformer(boulderDashController);
-		//JOptionPane.showMessageDialog(null, "test de méthode");
+		
 		
 		graphicsBuilder = new GraphicsBuilder(boulderDashModel);
 		GameFrame frame = new GameFrame("test", 640,480, eventPerformer, graphicsBuilder, boulderDashModel);

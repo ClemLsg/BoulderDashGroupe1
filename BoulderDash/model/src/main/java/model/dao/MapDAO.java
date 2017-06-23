@@ -23,6 +23,7 @@ public class MapDAO extends AbstractDAO {
 	 * 		the record id in the database
 	 * @return a new Map
 	 * @throws SQLException
+	 * 		throws SQLException if there is an error during database access
 	 */
     public static Map getMap(int id) throws SQLException {
     	int x = getMapXsize(id);

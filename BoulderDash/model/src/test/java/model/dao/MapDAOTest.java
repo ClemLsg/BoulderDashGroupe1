@@ -27,6 +27,7 @@ public class MapDAOTest {
 	/**
 	 * Instantiate a new MapDAO for the test.
 	 * @throws Exception
+	 * 		throws Exception if there is an error during runtime
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -39,8 +40,9 @@ public class MapDAOTest {
 	}
 
 	/**
-	 * tests if the id is >=1 and tests the other methods.
+	 * tests if the id is upper or equals to 1 and tests the other methods.
 	 * @throws SQLException
+	 * 		throws SQLException if there is an error during database access
 	 */
 	@Test
 	public void testCreateMap() throws SQLException {
@@ -53,18 +55,19 @@ public class MapDAOTest {
 	/**
 	 * checks that the width isn't negative.
 	 * @throws SQLException
+	 * 		throws SQLException if there is an error during database access
 	 */
-	@Test
+	@Test (expected = SQLException.class)
 	public void testGetMapXsize() throws SQLException {
-		System.out.println(MapDAO.getMapXsize(this.id));
 		assert MapDAO.getMapXsize(this.id) >= 0 : "Error, width can't be < 0";
 	}
 
 	/**
 	 * checks that the height isn't negative.
 	 * @throws SQLException
+	 * 		throws SQLException if there is an error during database access
 	 */
-	@Test
+	@Test (expected = SQLException.class)
 	public void testGetMapYsize() throws SQLException {
 		assert MapDAO.getMapYsize(id) >= 0 : "Error, height can't be < 0";
 	}
@@ -72,8 +75,9 @@ public class MapDAOTest {
 	/**
 	 * checks that the mapCode has a correct length.
 	 * @throws SQLException
+	 * 		throws SQLException if there is an error during database access
 	 */
-	@Test
+	@Test (expected = SQLException.class)
 	public void testGetMapCode() throws SQLException {
 		assert (this.mapDAO.getMapCode(id).length() == this.mapDAO.getMapXsize(id) * this.mapDAO.getMapYsize(id) + this.mapDAO.getMapYsize(id)) || (this.mapDAO.getMapCode(id).length() == this.mapDAO.getMapYsize(id) * this.mapDAO.getMapXsize(id) + this.mapDAO.getMapYsize(id) + 1): "Error: incorrect mapCode";
 	}

@@ -22,6 +22,7 @@ public class MapTest {
 	/**
 	 * Instantiates a new Map for the test
 	 * @throws Exception
+	 * 		throws Exception if error during runtime
 	 */
 	@Before
 	public void setUp() throws Exception {

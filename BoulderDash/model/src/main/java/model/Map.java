@@ -26,7 +26,8 @@ public class Map {
 	 * 		the width of the map
 	 * @param y
 	 * 		the height of the map
-	 * @param i 
+	 * @param id
+	 * 		the id of the map
 	 * @param mapCode
 	 * 		the mapCode of the map
 	 */

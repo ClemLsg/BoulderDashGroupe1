@@ -22,7 +22,7 @@ class EventPerformer implements IEventPerformer {
 		}
 	}
 
-	private IUserOrder keyCodeToUserOrder(final int keyCode) {
+	public IUserOrder keyCodeToUserOrder(final int keyCode) {
 		IUserOrder[] userOrder = boulderDashController.getUserOrder();
 		
 		switch (keyCode) {
