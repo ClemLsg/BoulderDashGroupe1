@@ -26,6 +26,10 @@ public class GamePanel extends JPanel implements Observer{
 		//paintComponent(this.getGraphics());
 		
 	}
+	
+	public GamePanel() {
+		graphicsBuilder = null;
+	}
 
 	public void perfom(){
 		this.validate();
