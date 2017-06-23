@@ -13,4 +13,6 @@ public interface IBlock {
 	int getId();
 	boolean isPickable();
 	boolean isMovable();
+	void fall(int x, int y, int Ymax, IModel boulderDashModel, boolean pickable);
+	void slide(int i, int j, int yMax, IModel boulderDashModel, boolean pickable);
 }

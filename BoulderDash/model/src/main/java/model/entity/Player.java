@@ -5,7 +5,6 @@ import model.IAlive;
 import model.IBlock;
 import model.IModel;
 import model.ITile;
-import model.tile.*;
 
 public class Player extends Alive{
 	private int score = 0;
@@ -55,34 +54,50 @@ public class Player extends Alive{
 		this.block = boulderDashModel.getBlock();
 		int y = getYPlayerPosition(alives, xMax,yMax);
 		int x = getXPlayerPosition(alives,xMax,yMax);
+		Thread thr = new Thread(){
+			public void run(){
+				for(int j = 0; j < yMax; j++){
+					for(int i = 0; i < xMax; i++){
+						if(block[i][j] != null){ 
+							if(block[i][j+1] == null && alives[i][j+1] == null && tile[i][j+1] == null){
+								block[i][j].fall(i, j, yMax, boulderDashModel, block[i][j].isPickable());
+								block[i][j].slide(i, j, yMax, boulderDashModel, block[i][j].isPickable());
+							}
+						}
+					}
+				}
+			}
+		};
+		thr.start();
+		Thread thre = new Thread(){
+			public void run(){
+				for(int j = 0; j < yMax; j++){
+					for(int i = 0; i < xMax; i++){
+						if(block[i][j] != null){ 
+							if(block[i][j+1] == null && alives[i][j+1] == null && tile[i][j+1] == null){
+								block[i][j].slide(i, j, yMax, boulderDashModel, block[i][j].isPickable());
+							}
+						}
+					}
+				}
+			}
+		};
+		thre.start();
 		switch (this.direction){
 		case DOWN:
-			if(tile[x][y+1] != null && tile[x][y+1].getIsSolid() == true){
-				break;
-			} else if(tile[x][y+1] != null && tile[x][y+1].getIsBreakable() == true){
-				tile[x][y+1] = null;
-			} else if(block[x][y+1] != null && block[x][y+1].isPickable() == false){
-				break;
-			}
-			
+			if (checkMovementDOWN(x, y, tile, block) == 1){break;}
 			if(block[x][y+1] != null && block[x][y+1].isPickable() == true){
 				block[x][y+1] = null;
 				this.setAmountDiamonds(getAmountDiamonds()+1);
 			}
-			
+			if(block[x][y-1] != null){
+				block[x][y-1].fall(x, y-1, yMax, boulderDashModel, block[x][y-1].isPickable());
+			}
 			alives[x][y+1] = new Player(7);
 			alives[x][y] = null;
-			
 			break;
 		case UP:
-			if(tile[x][y-1] != null && tile[x][y-1].getIsSolid() == true){
-				break;
-			} else if(tile[x][y-1] != null && tile[x][y-1].getIsBreakable() == true){
-				tile[x][y-1] = null;
-			} else if(block[x][y-1] != null && block[x][y-1].isPickable() == false){
-				break;
-			}
-			
+			if (checkMovementUP(x, y, tile, block) == 1){break;}
 			if(block[x][y-1] != null && block[x][y-1].isPickable() == true){
 				block[x][y-1] = null;
 				this.setAmountDiamonds(getAmountDiamonds()+1);
@@ -91,12 +106,7 @@ public class Player extends Alive{
 			alives[x][y] = null;
 			break;
 		case LEFT:
-			if(tile[x-1][y] != null && tile[x-1][y].getIsSolid() == true){
-				break;
-			} else if(tile[x-1][y] != null && tile[x-1][y].getIsBreakable() == true){
-				tile[x-1][y] = null;
-			}
-			
+			if (checkMovementLEFT(x, y, tile, block) == 1){break;}
 			if(block[x-1][y] != null && block[x-1][y].isPickable() == true){
 				block[x-1][y] = null;
 				this.setAmountDiamonds(getAmountDiamonds()+1);
@@ -108,18 +118,14 @@ public class Player extends Alive{
 					break;
 				}
 			}
-			
+			if(block[x][y-1] != null){
+				block[x][y-1].fall(x, y-1, yMax, boulderDashModel, block[x][y-1].isPickable());
+			}
 			alives[x-1][y] = new Player(7);
 			alives[x][y] = null;
-		
 			break;
 		case RIGHT:
-			if(tile[x+1][y] != null && tile[x+1][y].getIsSolid() == true){
-				break;
-			} else if(tile[x+1][y] != null && tile[x+1][y].getIsBreakable() == true){
-				tile[x+1][y] = null;
-			}
-			
+			if (checkMovementRIGHT(x, y, tile, block) == 1){break;}
 			if(block[x+1][y] != null && block[x+1][y].isPickable() == true){
 				block[x+1][y] = null;
 				this.setAmountDiamonds(getAmountDiamonds()+1);
@@ -131,10 +137,11 @@ public class Player extends Alive{
 					break;
 				}
 			}
-			
+			if(block[x][y-1] != null){
+				block[x][y-1].fall(x, y-1, yMax, boulderDashModel, block[x][y-1].isPickable());
+			}
 			alives[x+1][y] = new Player(7);
-			alives[x][y] = null;
-		
+			alives[x][y] = null;		
 			break;
 		}
 		boulderDashModel.setAliveTab(alives);
@@ -146,7 +153,6 @@ public class Player extends Alive{
 	public int getScore() {
 		return score;
 	}
-
 	public void setScore(int score) {
 		this.score = score;
 	}

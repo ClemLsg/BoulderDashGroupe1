@@ -19,4 +19,5 @@ public interface IAlive {
 	void setAliveTab(IAlive[][] alive);
 	void setTiles(ITile[][] tiles);
 	void setBlock(IBlock[][] block);
+	void explodes(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive);
 }

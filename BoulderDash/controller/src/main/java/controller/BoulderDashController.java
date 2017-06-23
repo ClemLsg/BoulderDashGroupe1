@@ -44,9 +44,7 @@ public class BoulderDashController implements IOrderPerformer, IController{
 		}
 		System.out.println(direction);
 		int x = boulderDashModel.getMapXsize(1);
-		//System.out.println(x);
 		int y = boulderDashModel.getMapYsize(1);
-		//System.out.println(y);
 		boulderDashModel.setDirection(direction);
 		boulderDashModel.move(direction ,x,  y,boulderDashModel);
 	}

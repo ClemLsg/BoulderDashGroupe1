@@ -30,18 +30,18 @@ public class Map {
 	 * 		the mapCode of the map
 	 */
 	public Map(final int x, final int y, final String mapCode) {
-		this.width = x;
-		this.height = y;
-		this.mapCode = mapCode;
-		this.map = new int[height][width];
+		Map.width = x;
+		Map.height = y;
+		Map.mapCode = mapCode;
+		Map.map = new int[height][width];
 		setMap();
 	}
 	
 	 public Map(int id) throws SQLException { 
-		    this.width = MapDAO.getMapXsize(id); 
-		    this.height = MapDAO.getMapYsize(id); 
-		    this.mapCode = MapDAO.getMapCode(id); 
-		    this.map = new int[height][width]; 
+		    Map.width = MapDAO.getMapXsize(id); 
+		    Map.height = MapDAO.getMapYsize(id); 
+		    Map.mapCode = MapDAO.getMapCode(id); 
+		    Map.map = new int[height][width]; 
 		    setMap(); 
 		  } 
 	

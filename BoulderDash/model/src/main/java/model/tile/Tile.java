@@ -5,7 +5,6 @@ import model.ITile;
 public class Tile implements ITile{
 	public static Tile tile[];
 	private boolean isBreak;
-	private TileType tileType;
 	private int id; 
 	
 	public Tile(int id){
