@@ -8,6 +8,11 @@ public class Mob1 extends Mob {
 		super(id);
 		this.setAlive(true);
 	}
+	/**
+	 * Give point to a player
+	 * @param player
+	 * The player that we want to give point
+	 */
 	 public void givePoints(Player player){
 		 int points = player.getScore();
 		 player.setScore(points + 1);

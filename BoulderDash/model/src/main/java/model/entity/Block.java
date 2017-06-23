@@ -16,7 +16,11 @@ public abstract class Block implements IBlock{
 	public Block(int id) {
 		this.setId(id);
 	}
-	
+	/**
+	 * Make the thing fall
+	 * @param x, y, tile, boulderDashModel
+	 * the thing that we need to make fall
+	 */
 	@Override
 	public void fall(int x, int yx, int Ymax, IModel boulderDashModel, boolean pickable){
 		Thread thread = new Thread(){
@@ -58,7 +62,11 @@ public abstract class Block implements IBlock{
 		thread.start();
 		
 	}
-	
+	/**
+	 * Make slide something
+	 * @param x, y, tile, block, alive
+	 * Info about the thing we want to make slide
+	 */
 	public void slide(int x, int y, int Ymax, IModel boulderDashModel, Direction direction){
 		boulderDashModel.getAlive();
 		boulderDashModel.getTile();

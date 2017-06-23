@@ -20,6 +20,12 @@ public class BoulderDashController implements IOrderPerformer, IController{
 		userOrder[2] = new UserOrder(Order.LEFT);
 		userOrder[3] = new UserOrder(Order.DOWN);
 	}
+	/**
+	 * Send to the model which order need to be exec
+	 * @param userOrder
+	 * The order that we want to exec
+	 */
+	
 	
 	@Override
 	public void orderPerform(IUserOrder userOrder) throws SQLException {

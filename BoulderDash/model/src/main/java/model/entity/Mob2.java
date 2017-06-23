@@ -8,6 +8,11 @@ public class Mob2 extends Mob {
 		super(id);
 		this.setAlive(true);
 	}
+	/**
+	 * Give diamond to a player
+	 * @param player
+	 * The player that we want to give diamond
+	 */
 	 public void giveDiamonds(Player player){
 		 int amountDiamonds = player.getAmountDiamonds();
 		 player.setAmountDiamonds(amountDiamonds + 1);

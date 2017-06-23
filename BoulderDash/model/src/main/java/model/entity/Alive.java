@@ -17,7 +17,11 @@ public class Alive implements IAlive{
 	}
 
 	public void Move(Direction direction) {}
-	
+	/**
+	 * Check a down movement
+	 * @param x, y, tile, block, alive
+	 * The position and the alive
+	 */
 	public int checkMovementDOWN(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive, IModel boulderDashModel){
 		int result;
 				if(tile[x][y+1] != null && tile[x][y+1].getIsSolid() == true){
@@ -35,7 +39,11 @@ public class Alive implements IAlive{
 		result = 0;
 		return result;
 	}
-	
+	/**
+	 * Check a up movement
+	 * @param x, y, tile, block, alive
+	 * The position and the alive
+	 */
 	public int checkMovementUP(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive, IModel boulderDashModel){
 		int result;
 		if(tile[x][y-1] != null && tile[x][y-1].getIsSolid() == true){
@@ -53,7 +61,11 @@ public class Alive implements IAlive{
 		result = 0;
 		return result;
 	}
-	
+	/**
+	 * Check a left movement
+	 * @param x, y, tile, block, alive
+	 * The position and the alive
+	 */
 	public int checkMovementLEFT(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive, IModel boulderDashModel){
 		int result;
 		if(tile[x-1][y] != null && tile[x-1][y].getIsSolid() == true){
@@ -68,7 +80,11 @@ public class Alive implements IAlive{
 		result = 0;
 		return result;
 	}
-	
+	/**
+	 * Check a right movement
+	 * @param x, y, tile, block, alive
+	 * The position and the alive
+	 */
 	public int checkMovementRIGHT(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive, IModel boulderDashModel){
 		int result;
 		if(tile[x+1][y] != null && tile[x+1][y].getIsSolid() == true){
@@ -83,7 +99,11 @@ public class Alive implements IAlive{
 		result = 0;
 		return result;
 	}
-	
+	/**
+	 * Make an explosion around the alive thing
+	 * @param x, y, tile, block, alive
+	 * The position and the alive who will explode
+	 */
 	@Override
 	public void explodes(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive){
 		if(tile[x+1][y] != null && tile[x+1][y].getIsSolid() != true){tile[x+1][y] = null;}

@@ -47,7 +47,11 @@ public class Player extends Alive{
 			}
 		return 0;
 	}
-	
+	/**
+	 * Move the player
+	 * @param xMax, yMax, boulderDashModel
+	 * the border of the map
+	 */
 	@Override
 	public void move(Direction direction,int xMax, int yMax, IModel boulderDashModel){
 		this.alives = boulderDashModel.getAlive();
