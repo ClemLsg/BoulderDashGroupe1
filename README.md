@@ -33,15 +33,15 @@ Sequences Diagram : The Sequence diagramm in needed in the project deliverable p
 
 ### 2.3. Report
 
-Surefire Report
+[Surefire Report](https://github.com/Darkdady/BoulderDashGroupe1/blob/master/Deliverables/SurefireHUB.md)
 
-JXR
+[JXR](https://github.com/Darkdady/BoulderDashGroupe1/tree/master/Deliverables/JXR%20Report)
 
 [GIT Report](https://github.com/Darkdady/BoulderDashGroupe1/blob/master/Deliverables/GitReport.md)
 
 ### 2.4. Others
 
-[Mark sheet](https://viacesifr-my.sharepoint.com/personal/paul_fontaine_viacesi_fr/_layouts/15/WopiFrame.aspx?sourcedoc={d8584012-e4c6-4305-8493-d11145f2a780}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True)
+[Mark sheet](https://viacesifr-my.sharepoint.com/personal/paul_fontaine_viacesi_fr/_layouts/15/guestaccess.aspx?docid=1d8584012e4c643058493d11145f2a780&authkey=AdrGgfUSO0Rlg3j6JQWtg_g)
 
 # 3. Boulder Dash
 
