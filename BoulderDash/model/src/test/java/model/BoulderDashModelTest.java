@@ -24,17 +24,17 @@ public class BoulderDashModelTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test (expected = SQLException.class)
+	@Test
 	public void testGetMapCode() throws SQLException  {
 		assert (this.bdm.getMapCode(id).length() == this.bdm.getMapXsize(id) * this.bdm.getMapYsize(id) + this.bdm.getMapYsize(id)) || (this.bdm.getMapCode(id).length() == this.bdm.getMapYsize(id) * this.bdm.getMapXsize(id) + this.bdm.getMapYsize(id) + 1): "Error: incorrect mapCode";
 	}
 
-	@Test (expected = SQLException.class)
+	@Test
 	public void testGetMapYsize() throws SQLException {
 		assert bdm.getMapXsize(this.id) >= 0 : "Error, width can't be < 0";
 	}
 
-	@Test (expected = SQLException.class)
+	@Test
 	public void testGetMapXsize() throws SQLException {
 		assert bdm.getMapXsize(this.id) >= 0 : "Error, width can't be < 0";
 	}
@@ -43,13 +43,6 @@ public class BoulderDashModelTest {
 	public void testGetMap() {
 		int[][] unexpected = null;
 		assert bdm.getMap() != unexpected : "Error: Map is null";
-	}
-
-	@Test
-	public void testGetId() {
-		int expected = id;
-		assertEquals(expected, bdm.getId());
-		assert (bdm.getId() >= 0) && (bdm.getId() <= 7) : "Error: id out of range";
 	}
 
 	@Test
