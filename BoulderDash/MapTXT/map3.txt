@@ -28,6 +28,6 @@
 
 ## Information
 
-Largeur : 33
+Largeur : 32
 Hauteur : 23
 
