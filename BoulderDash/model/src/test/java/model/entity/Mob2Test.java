@@ -8,10 +8,15 @@ import org.junit.Test;
 
 public class Mob2Test {
 	int id =1;
-	
+
+	/** the objects used for the tests */
 	Mob2 mob2;
 	Player player;
 
+	/**
+	 * instantiate a new Alive
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		player = new Player(id);
@@ -22,6 +27,9 @@ public class Mob2Test {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * tests if the mob gives diamonds to the player
+	 */
 	@Test
 	public void testGiveDiamonds() {
 		int expected = player.getAmountDiamonds() + 1;

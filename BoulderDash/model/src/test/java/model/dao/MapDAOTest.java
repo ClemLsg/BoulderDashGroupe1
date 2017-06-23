@@ -11,9 +11,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class MapDAOTest {
-	
+	/** the id of the map */
 	int id = -1;
 	
+	/** the object for the tests */
 	MapDAO mapDAO;
 
 	@BeforeClass

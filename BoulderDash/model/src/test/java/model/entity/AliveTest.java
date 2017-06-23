@@ -7,10 +7,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AliveTest {
+	/** the parameter for the constructor */
 	int id = 1;
 	
+	/** the object used for the tests */
 	Alive alive;
 
+	/**
+	 * instantiate a new Alive
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		alive = new Alive(id);
@@ -20,6 +26,9 @@ public class AliveTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * tests if he is alive
+	 */
 	@Test
 	public void testIsAlive() {
 		boolean expected = true;
@@ -29,6 +38,9 @@ public class AliveTest {
 		assertEquals(expected, alive.isAlive());
 	}
 
+	/**
+	 * tests if his id is correct
+	 */
 	@Test
 	public void testGetId() {
 		int expected = id;
