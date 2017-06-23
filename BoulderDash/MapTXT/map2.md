@@ -1,5 +1,3 @@
-
-
 ## Code de la map
 ```
 444444444444444444444444444444448
@@ -29,6 +27,6 @@
 
 ## Information
 
-Largeur : 33
+Largeur : 32
 Hauteur : 23
 
