@@ -1,13 +1,17 @@
 package view;
 
+import java.util.Observer;
+
 /**
  * <h1>The Interface IView.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * 
  * @version 1.0
  */
 public interface IView {
 
+	public void closeAll();
+	
     /**
      * Display message.
      *
@@ -15,4 +19,7 @@ public interface IView {
      *            the message
      */
     void displayMessage(String message);
+
+	Observer getObserver();
+	
 }

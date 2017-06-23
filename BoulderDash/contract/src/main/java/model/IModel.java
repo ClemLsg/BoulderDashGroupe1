@@ -1,44 +1,24 @@
 package model;
 
+import java.awt.image.BufferedImage;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Observer;
 
-/**
- * <h1>The Interface IModel.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
-public interface IModel {
+import javax.swing.ImageIcon;
 
-    /**
-     * Gets the example by id.
-     *
-     * @param id
-     *            the id
-     * @return the example by id
-     * @throws SQLException
-     *             the SQL exception
-     */
-    Example getExampleById(int id) throws SQLException;
 
-    /**
-     * Gets the example by name.
-     *
-     * @param name
-     *            the name
-     * @return the example by name
-     * @throws SQLException
-     *             the SQL exception
-     */
-    Example getExampleByName(String name) throws SQLException;
-
-    /**
-     * Gets the all examples.
-     *
-     * @return the all examples
-     * @throws SQLException
-     *             the SQL exception
-     */
-    List<Example> getAllExamples() throws SQLException;
+public interface IModel extends IBlock, IAlive, ITile {
+	String getMapCode(int id) throws SQLException;
+	int getMapYsize(int id)throws SQLException;
+	int getMapXsize(int id)throws SQLException;
+    BufferedImage[] getSpriteTab();
+    int[][] getMap();
+	void setMoved();
+	void notifyObservers();
+	void setObserver(Observer observer);
+	boolean isHasWon();
+	void setHasWon(boolean hasWon);
+	int getMapDiamonds();
+	ImageIcon getLogo();
+	int getIdMap();
 }
