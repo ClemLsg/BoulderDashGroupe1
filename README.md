@@ -29,7 +29,7 @@ Componants Diagram
 
 [Class Diagram](https://github.com/Darkdady/BoulderDashGroupe1/tree/master/Deliverables/Diagramms/Class)
 
-Sequences Diagram
+Sequences Diagram : The Sequence diagramm in needed in the project deliverable page, but not in the mark sheet, so we conclud that it is optional.
 
 ### 2.3. Report
 
@@ -42,8 +42,23 @@ JXR
 # 3. Boulder Dash
 
 ### 3.1. Installation
+
+* Step 1 : Install [JRE](https://www.java.com/fr/download/) if you don't have it on your operating system.
+* Step 2 : Download the last Boulder Dash release [HERE](www.perdu.com)
+* Step 3 : Install an localhost mySQL server, and create an new database with [this script](www.perdu.com)
+
 ### 3.2. Execution
 
+* Step 1 : Launch your mySQL server
+* Step 2 : Launch the BoulderDashG1.jar
+* Step 3 : Enjoy
+
 # 4. License
-### 4.1. Creative Common
-### 4.2. AbandonWare
+### 4.1. AbandonWare
+Abandonware is a product, typically software, ignored by its owner and manufacturer, and for which no support is available. Although such software is usually still under copyright, the owner may not be tracking copyright violations.
+
+In intellectual rights context, abandonware is a software (or hardware) special case of the general concept of orphan works.
+
+# 5. Support
+
+If you had any question or issue, you can create an issue on GitHub an we will try to fix it quickly.
