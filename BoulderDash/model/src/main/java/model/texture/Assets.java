@@ -5,11 +5,17 @@ import java.awt.image.BufferedImage;
 public class Assets {
 	private static final int width = 16, height =16;
 	public static BufferedImage haut, bas, gauche, droite, background, mud, wall, rock, diamond, door, mob1, mob2;
-	private static BufferedImage spriteTab[] = new BufferedImage[8];
+	private static BufferedImage spriteTab[] = new BufferedImage[9];
 	
 	public Assets(int id){
 		init(id);
 	}
+	
+	/**
+	 * Initialize all the texture
+	 * @param idSkin
+	 * The id of the skin
+	 */
 	public static void init(int idSkin){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("C:\\Users\\Darkdady\\Documents\\Git\\BoulderDashGroupe1\\BoulderDash\\main\\src\\main\\resources\\player.png"));
 		haut = sheet.crop(2*width, 5*height, width, height);
@@ -36,6 +42,7 @@ public class Assets {
 		spriteTab[5]=rock;
 		spriteTab[6]=diamond;
 		spriteTab[7]=bas;
+		spriteTab[8]=mob2;
 		
 	}
 

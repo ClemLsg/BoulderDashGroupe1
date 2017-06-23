@@ -38,6 +38,7 @@ public class GameFrame extends JFrame implements KeyListener {
 		//gamePanel.setBackground(Color.BLUE);
 		gamePanel.setDoubleBuffered(true);
 		frame.setContentPane(gamePanel);
+		frame.setIconImage(boulderDashModel.getLogo().getImage());
 		//JPanel pan = new JPanel();
 
 	  
@@ -73,5 +74,6 @@ public class GameFrame extends JFrame implements KeyListener {
 		// TODO Auto-generated method stub
 		return gamePanel;
 	}
+
 
 }

@@ -9,6 +9,10 @@ import javax.imageio.ImageIO;
 
 
 public class ImageLoader {
+	
+	/**
+	 * Cut a part of an image
+	 */
 	public static BufferedImage loadImage(String path){	
 		try {
 		      return (BufferedImage) (ImageIO.read(new File(path)));

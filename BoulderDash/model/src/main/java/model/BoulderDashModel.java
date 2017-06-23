@@ -4,6 +4,9 @@ import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 import model.dao.MapDAO;
 import model.entity.*;
@@ -22,8 +25,13 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	private IAlive player;
 	private IBlock rock;
 	private Observer observer;
+	private boolean isAlive = true;
+	private boolean hasWon = false;
+	private int mapDiamonds = 0;
+	private ImageIcon logo;
 	
 	public BoulderDashModel(int id) throws SQLException {
+		logo = new ImageIcon("C:\\Users\\Darkdady\\Documents\\Git\\BoulderDashGroupe1\\BoulderDash\\main\\src\\main\\resources\\boulder-dash-logo.png");
     	
 		new Assets(id);
     	new MapDAO();
@@ -43,6 +51,18 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 				case 2: //mud
 					tiles[i][j] = new Mud(2);
 					break;
+				case 3: //mob
+					Random rand = new Random();
+					 int randomNum = rand.nextInt((1 - 0) + 1) + 0;
+					 switch(randomNum){
+					 case 0 :
+						 alive[i][j] = new Mob1(3);
+						 break;
+					 case 1 :
+						 alive[i][j] = new Mob2(8);
+						 break;
+					 }
+					break;
 				case 4: //wall
 					tiles[i][j] = new Wall(4);
 					break;
@@ -51,6 +71,7 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 					break;
 				case 6: //diamond
 					blocks[i][j] = new Diamond(6);
+					this.setMapDiamonds(this.getMapDiamonds()+1);
 					break;
 				case 7: //player
 					alive[i][j] = new Player(7);
@@ -94,9 +115,11 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	@Override
 	public void setBreak(boolean isBreak) {}
 	@Override
-	public boolean isAlive() {return false;}
+	public boolean isAlive() {return isAlive;}
 	@Override
-	public void setAlive(boolean isAlive) {}
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
 	@Override
 	public void setDirection(Direction direction) {
 	
@@ -135,5 +158,23 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	public void slide(int i, int j, int yMax, IModel boulderDashModel, boolean pickable) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public boolean isHasWon() {
+		return hasWon;
+	}
+	@Override
+	public void setHasWon(boolean hasWon) {
+		this.hasWon = hasWon;
+	}
+	public int getMapDiamonds() {
+		return mapDiamonds;
+	}
+	public void setMapDiamonds(int mapDiamonds) {
+		this.mapDiamonds = mapDiamonds;
+	}
+	@Override
+	public ImageIcon getLogo() {
+		return logo;
 	}
 }

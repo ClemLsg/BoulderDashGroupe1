@@ -5,6 +5,7 @@ import model.IAlive;
 import model.IBlock;
 import model.IModel;
 import model.ITile;
+import model.tile.Door;
 
 public class Alive implements IAlive{
 	private Direction direction;

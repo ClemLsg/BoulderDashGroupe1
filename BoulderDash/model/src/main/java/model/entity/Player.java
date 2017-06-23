@@ -5,6 +5,7 @@ import model.IAlive;
 import model.IBlock;
 import model.IModel;
 import model.ITile;
+import model.tile.Door;
 
 public class Player extends Alive{
 	private int score = 0;
@@ -54,62 +55,45 @@ public class Player extends Alive{
 		this.block = boulderDashModel.getBlock();
 		int y = getYPlayerPosition(alives, xMax,yMax);
 		int x = getXPlayerPosition(alives,xMax,yMax);
-		Thread thr = new Thread(){
-			public void run(){
-				for(int j = 0; j < yMax; j++){
-					for(int i = 0; i < xMax; i++){
-						if(block[i][j] != null){ 
-							if(block[i][j+1] == null && alives[i][j+1] == null && tile[i][j+1] == null){
-								block[i][j].fall(i, j, yMax, boulderDashModel, block[i][j].isPickable());
-								block[i][j].slide(i, j, yMax, boulderDashModel, block[i][j].isPickable());
-							}
-						}
-					}
-				}
-			}
-		};
-		thr.start();
-		Thread thre = new Thread(){
-			public void run(){
-				for(int j = 0; j < yMax; j++){
-					for(int i = 0; i < xMax; i++){
-						if(block[i][j] != null){ 
-							if(block[i][j+1] == null && alives[i][j+1] == null && tile[i][j+1] == null){
-								block[i][j].slide(i, j, yMax, boulderDashModel, block[i][j].isPickable());
-							}
-						}
-					}
-				}
-			}
-		};
-		thre.start();
 		switch (this.direction){
 		case DOWN:
 			if (checkMovementDOWN(x, y, tile, block) == 1){break;}
 			if(block[x][y+1] != null && block[x][y+1].isPickable() == true){
 				block[x][y+1] = null;
-				this.setAmountDiamonds(getAmountDiamonds()+1);
+				this.setAmountDiamonds(this.getAmountDiamonds()+1);
 			}
 			if(block[x][y-1] != null){
 				block[x][y-1].fall(x, y-1, yMax, boulderDashModel, block[x][y-1].isPickable());
 			}
-			alives[x][y+1] = new Player(7);
-			alives[x][y] = null;
+			if(tile[x][y+1] instanceof Door && this.getAmountDiamonds() == boulderDashModel.getMapDiamonds()){
+				alives[x][y].setAlive(false);
+				alives[x][y] = null;
+				boulderDashModel.setHasWon(true);
+			} else {
+				alives[x][y+1] = new Player(7);
+				alives[x][y] = null;
+			}
 			break;
 		case UP:
 			if (checkMovementUP(x, y, tile, block) == 1){break;}
 			if(block[x][y-1] != null && block[x][y-1].isPickable() == true){
 				block[x][y-1] = null;
-				this.setAmountDiamonds(getAmountDiamonds()+1);
+				this.setAmountDiamonds(this.getAmountDiamonds()+1);
 			}
-			alives[x][y-1] = new Player(7);
-			alives[x][y] = null;
+			if(tile[x][y-1] instanceof Door && this.getAmountDiamonds() == boulderDashModel.getMapDiamonds()){
+				alives[x][y].setAlive(false);
+				alives[x][y] = null;
+				boulderDashModel.setHasWon(true);
+			} else {
+				alives[x][y-1] = new Player(7);
+				alives[x][y] = null;
+			}
 			break;
 		case LEFT:
 			if (checkMovementLEFT(x, y, tile, block) == 1){break;}
 			if(block[x-1][y] != null && block[x-1][y].isPickable() == true){
 				block[x-1][y] = null;
-				this.setAmountDiamonds(getAmountDiamonds()+1);
+				this.setAmountDiamonds(this.getAmountDiamonds()+1);
 			} else if(block[x-1][y] != null && block[x-1][y].isMovable() == true){
 				if(tile[x-2][y] == null && block[x-2][y] == null){
 					block[x-2][y] = new Rock(5);
@@ -121,14 +105,20 @@ public class Player extends Alive{
 			if(block[x][y-1] != null){
 				block[x][y-1].fall(x, y-1, yMax, boulderDashModel, block[x][y-1].isPickable());
 			}
-			alives[x-1][y] = new Player(7);
-			alives[x][y] = null;
+			if(tile[x-1][y] instanceof Door && this.getAmountDiamonds() == boulderDashModel.getMapDiamonds()){
+				alives[x][y].setAlive(false);
+				alives[x][y] = null;
+				boulderDashModel.setHasWon(true);
+			} else {
+				alives[x-1][y] = new Player(7);
+				alives[x][y] = null;
+			}
 			break;
 		case RIGHT:
 			if (checkMovementRIGHT(x, y, tile, block) == 1){break;}
 			if(block[x+1][y] != null && block[x+1][y].isPickable() == true){
 				block[x+1][y] = null;
-				this.setAmountDiamonds(getAmountDiamonds()+1);
+				this.setAmountDiamonds(this.getAmountDiamonds()+1);
 			} else if(block[x+1][y] != null && block[x+1][y].isMovable() == true){
 				if(tile[x+2][y] == null && block[x+2][y] == null){
 					block[x+2][y] = new Rock(5);
@@ -140,8 +130,14 @@ public class Player extends Alive{
 			if(block[x][y-1] != null){
 				block[x][y-1].fall(x, y-1, yMax, boulderDashModel, block[x][y-1].isPickable());
 			}
-			alives[x+1][y] = new Player(7);
-			alives[x][y] = null;		
+			if(tile[x+1][y] instanceof Door && this.getAmountDiamonds() == boulderDashModel.getMapDiamonds()){
+				alives[x][y].setAlive(false);
+				alives[x][y] = null;
+				boulderDashModel.setHasWon(true);
+			} else {
+				alives[x+1][y] = new Player(7);
+				alives[x][y] = null;
+			}
 			break;
 		}
 		boulderDashModel.setAliveTab(alives);

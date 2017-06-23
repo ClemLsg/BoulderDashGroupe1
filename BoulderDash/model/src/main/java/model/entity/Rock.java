@@ -2,6 +2,7 @@ package model.entity;
 
 import model.Direction;
 import model.IBlock;
+import model.IModel;
 
 public class Rock extends Block{
 	private int id;
@@ -38,6 +39,12 @@ public class Rock extends Block{
 	public IBlock[][] getBlock() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void slide(int i, int j, int yMax, IModel boulderDashModel, boolean pickable) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

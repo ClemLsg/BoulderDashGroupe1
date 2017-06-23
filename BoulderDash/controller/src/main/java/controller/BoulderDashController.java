@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import model.Direction;
 import model.IAlive;
+import model.IBlock;
 import model.IModel;
+import model.ITile;
 import view.IView;
 import view.IViewSystem;
 
@@ -14,6 +16,7 @@ public class BoulderDashController implements IOrderPerformer, IController{
 	private IModel boulderDashModel;
 	private IViewSystem	viewSystem;
 	private IUserOrder userOrder[] = new IUserOrder[4];
+	private IAlive[][] alives;
 	
 	public BoulderDashController(IModel boulderDashModel){
 		this.boulderDashModel = boulderDashModel;
@@ -47,32 +50,27 @@ public class BoulderDashController implements IOrderPerformer, IController{
 		int y = boulderDashModel.getMapYsize(1);
 		boulderDashModel.setDirection(direction);
 		boulderDashModel.move(direction ,x,  y,boulderDashModel);
-	}
-
-
-	@Override
-	public void play() {
-		this.gameLoop();
-		//this.viewSystem.displayMessage("Game Over !");
-		//this.viewSystem.closeAll();
-		
-	}
-	
-	private void gameLoop() {
-		while (boulderDashModel.isAlive() == true) {
-			try {
-				Thread.sleep(30);
-			} catch (final InterruptedException ex) {
-				Thread.currentThread().interrupt();
+		Thread thr = new Thread(){
+			private IAlive[][] alives;
+			private ITile[][] tile;
+			private IBlock[][] block;
+			public void run(){
+				this.alives = boulderDashModel.getAlive();
+				this.tile = boulderDashModel.getTile();
+				this.block = boulderDashModel.getBlock();
+				for(int j = 0; j < y; j++){
+					for(int i = 0; i < x; i++){
+						if(block[i][j] != null){ 
+							if(block[i][j+1] == null && alives[i][j+1] == null && tile[i][j+1] == null){
+								block[i][j].fall(i, j, y, boulderDashModel, block[i][j].isPickable());
+							}
+						}
+					}
+				}
 			}
-			
-			//boulderDashModel.setMoved();
+		};
+		thr.start();
 	}
-	}
-	
-	/*public synchronized void setViewSystem(final IViewSystem viewSystem) {
-			this.viewSystem = viewSystem;
-		}*/
 
 	@Override
 	public synchronized void setViewSystem(IView boulderDashView) {

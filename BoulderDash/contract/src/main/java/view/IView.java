@@ -21,5 +21,5 @@ public interface IView {
     void displayMessage(String message);
 
 	Observer getObserver();
-    
+	
 }

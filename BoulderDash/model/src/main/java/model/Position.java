@@ -5,7 +5,13 @@ public class Position {
 	private int	y;
 	private int	maxX = 1;
 	private int	maxY = 1;
-
+	
+	/**
+	 * Give the position of an object on the map
+	 * @param x, y
+	 * 		the x postion, and the y position
+	 * @return a new Map
+	 */
 	public Position(final int x, final int y) {
 		this.x = x;
 		this.y = y;

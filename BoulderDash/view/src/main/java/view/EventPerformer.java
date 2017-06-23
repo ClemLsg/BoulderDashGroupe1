@@ -13,6 +13,13 @@ class EventPerformer implements IEventPerformer {
 	public EventPerformer(final IController boulderDashController) {
 		this.boulderDashController = boulderDashController;
 	}
+	
+	/**
+	 * Perform an event
+	 * @param keyCode
+	 * 		the code of the key your just press
+	 * @return void
+	 */
 	@Override
 	public void eventPerform(final KeyEvent keyCode) throws SQLException {
 		final IUserOrder userOrder = this.keyCodeToUserOrder(keyCode.getKeyCode());
@@ -21,7 +28,13 @@ class EventPerformer implements IEventPerformer {
 			this.boulderDashController.orderPerform(userOrder);
 		}
 	}
-
+	
+	/**
+	 * Gets the User Order and adds the code
+	 * @param keyCode
+	 * 		the code of the key your just press
+	 * @return void
+	 */
 	private IUserOrder keyCodeToUserOrder(final int keyCode) {
 		IUserOrder[] userOrder = boulderDashController.getUserOrder();
 		

@@ -28,13 +28,20 @@ public class BoulderDashView implements IView, Runnable{
 		//JOptionPane.showMessageDialog(null, "test de méthode");
 		
 		graphicsBuilder = new GraphicsBuilder(boulderDashModel);
-		GameFrame frame = new GameFrame("test", 640,480, eventPerformer, graphicsBuilder, boulderDashModel);
+		GameFrame frame = new GameFrame("Boulder Dash", boulderDashModel.getMapXsize(1)*32,(boulderDashModel.getMapYsize(1)+1)*32, eventPerformer, graphicsBuilder, boulderDashModel);
+		
 	}
 	
 	public void run(){
 		
 	}
-
+	
+	/**
+	 * Display a message
+	 * @param message
+	 * 		the message you want to display
+	 * @return void
+	 */
 	@Override
 	public void displayMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);

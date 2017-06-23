@@ -7,8 +7,10 @@ public class Door extends Tile{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void endLevel(){
-		
+	@Override
+	public boolean getIsSolid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

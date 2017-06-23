@@ -32,7 +32,7 @@ public abstract class Main {
     	IView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel);
     	boulderDashModel.setObserver(boulderDashView.getObserver());
     	boulderDashController.setViewSystem(boulderDashView);
-    	boulderDashController.play();
+    	//boulderDashController.play();
 
        
     }
