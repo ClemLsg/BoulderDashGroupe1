@@ -23,7 +23,7 @@ The goal of this project is clear : reproduce a game named " Boulder Dash " ( NE
 
 ### 2.2. Diagrams
 
-Componants Diagram
+[Componants Diagram](https://github.com/Darkdady/BoulderDashGroupe1/blob/master/Deliverables/Diagrams/Component%20Diagram.vpp)
 
 [Packages Diagram](https://github.com/Darkdady/BoulderDashGroupe1/blob/master/Deliverables/Diagrams/Package%20diagram.vpp)
 
