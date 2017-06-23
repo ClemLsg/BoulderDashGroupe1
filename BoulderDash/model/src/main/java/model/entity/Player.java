@@ -57,7 +57,7 @@ public class Player extends Alive{
 		int x = getXPlayerPosition(alives,xMax,yMax);
 		switch (this.direction){
 		case DOWN:
-			if (checkMovementDOWN(x, y, tile, block) == 1){break;}
+			if (checkMovementDOWN(x, y, tile, block, alives, boulderDashModel) == 1){break;}
 			if(block[x][y+1] != null && block[x][y+1].isPickable() == true){
 				block[x][y+1] = null;
 				this.setAmountDiamonds(this.getAmountDiamonds()+1);
@@ -75,7 +75,7 @@ public class Player extends Alive{
 			}
 			break;
 		case UP:
-			if (checkMovementUP(x, y, tile, block) == 1){break;}
+			if (checkMovementUP(x, y, tile, block, alives, boulderDashModel) == 1){break;}
 			if(block[x][y-1] != null && block[x][y-1].isPickable() == true){
 				block[x][y-1] = null;
 				this.setAmountDiamonds(this.getAmountDiamonds()+1);
@@ -90,7 +90,7 @@ public class Player extends Alive{
 			}
 			break;
 		case LEFT:
-			if (checkMovementLEFT(x, y, tile, block) == 1){break;}
+			if (checkMovementLEFT(x, y, tile, block, alives, boulderDashModel) == 1){break;}
 			if(block[x-1][y] != null && block[x-1][y].isPickable() == true){
 				block[x-1][y] = null;
 				this.setAmountDiamonds(this.getAmountDiamonds()+1);
@@ -115,7 +115,7 @@ public class Player extends Alive{
 			}
 			break;
 		case RIGHT:
-			if (checkMovementRIGHT(x, y, tile, block) == 1){break;}
+			if (checkMovementRIGHT(x, y, tile, block, alives, boulderDashModel) == 1){break;}
 			if(block[x+1][y] != null && block[x+1][y].isPickable() == true){
 				block[x+1][y] = null;
 				this.setAmountDiamonds(this.getAmountDiamonds()+1);

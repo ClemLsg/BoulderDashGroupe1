@@ -9,10 +9,7 @@ import model.ITile;
 public abstract class Block implements IBlock{
 	private Direction direction;
 	int id;
-	private boolean isFallen;
 	
-	private IAlive[][] alives;
-	private ITile[][] tile;
 	private IBlock[][] block;
 
 	
@@ -33,23 +30,24 @@ public abstract class Block implements IBlock{
 				this.block = boulderDashModel.getBlock();
 				while(block[x][y+1] == null && tile[x][y+1] == null){
 					System.out.println("FALL");
-					if(alives[x][y+1] != null){
-						alives[x][y+1].setAlive(false);
-						alives[x][y+1].explodes(x, y+1, tile, block, alives);
-						boulderDashModel.setAlive(false);
-						alives[x][y+1] = null;
-					}
 					if(pickable == true){
 						block[x][y+1] = new Diamond(6);
 					} else {
 						block[x][y+1] = new Rock(5);
+					}
+					if(alives[x][y+1] != null){
+						alives[x][y+1].setAlive(false);
+						alives[x][y+1].explodes(x, y+1, tile, block, alives);
+						if(alives[x][y+1] instanceof Player){
+							boulderDashModel.setAlive(false);
+						}
+						alives[x][y+1] = null;
 					}
 					block[x][y] = null;
 					y++;
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					boulderDashModel.setBlock(block);
@@ -62,8 +60,8 @@ public abstract class Block implements IBlock{
 	}
 	
 	public void slide(int x, int y, int Ymax, IModel boulderDashModel, Direction direction){
-		this.alives = boulderDashModel.getAlive();
-		this.tile = boulderDashModel.getTile();
+		boulderDashModel.getAlive();
+		boulderDashModel.getTile();
 		this.block = boulderDashModel.getBlock();
 		switch(direction){
 		case LEFT :
@@ -81,6 +79,8 @@ public abstract class Block implements IBlock{
 				block[x-1][y] = new Rock(5);
 			}
 			block[x][y] = null;
+			break;
+		default:
 			break;
 		}
 		boulderDashModel.setBlock(block);

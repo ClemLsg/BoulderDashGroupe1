@@ -19,31 +19,38 @@ import model.tile.*;
 
 public class BoulderDashModel extends Observable implements IModel, IBlock, IAlive, ITile{
 	
-	private IBlock[][] blocks = new Block[getMapXsize(1)][getMapYsize(1)];
-	private IAlive[][] alive = new Alive[getMapXsize(1)][getMapYsize(1)];
-	private ITile[][] tiles = new Tile[getMapXsize(1)][getMapYsize(1)];
+	private IBlock[][] blocks;
+	private IAlive[][] alive;
+	private ITile[][] tiles;
 	private IAlive player;
-	private IBlock rock;
+	private IAlive mob;
 	private Observer observer;
 	private boolean isAlive = true;
 	private boolean hasWon = false;
 	private int mapDiamonds = 0;
 	private ImageIcon logo;
+	private int idMap;
+	
+	
 	
 	public BoulderDashModel(int id) throws SQLException {
 		logo = new ImageIcon("C:\\Users\\Darkdady\\Documents\\Git\\BoulderDashGroupe1\\BoulderDash\\main\\src\\main\\resources\\boulder-dash-logo.png");
     	
+		this.setIdMap(id);
+		blocks = new Block[getMapXsize(id)][getMapYsize(id)];
+		alive = new Alive[getMapXsize(id)][getMapYsize(id)];
+		tiles = new Tile[getMapXsize(id)][getMapYsize(id)];
 		new Assets(id);
     	new MapDAO();
     	new Map(id);
     	int[][] mapcode = getMap();
     	int obj;
-    	for (int j = 0; j < getMapYsize(1); j++){
-			for ( int i = 0; i < getMapXsize(1); i++){
+    	for (int j = 0; j < getMapYsize(id); j++){
+			for ( int i = 0; i < getMapXsize(id); i++){
 				obj = mapcode[j][i];
 				switch(obj){
 				case 0: //background
-					tiles[i][j] = new Background(0);
+					tiles[i][j] = null;
 					break;
 				case 1: //door
 					tiles[i][j]= new Door(1);
@@ -57,6 +64,7 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 					 switch(randomNum){
 					 case 0 :
 						 alive[i][j] = new Mob1(3);
+						 mob = alive[i][j];
 						 break;
 					 case 1 :
 						 alive[i][j] = new Mob2(8);
@@ -176,5 +184,89 @@ public class BoulderDashModel extends Observable implements IModel, IBlock, IAli
 	@Override
 	public ImageIcon getLogo() {
 		return logo;
+	}
+	@Override
+	public int getIdMap() {
+		return idMap;
+	}
+	public void setIdMap(int idMap) {
+		this.idMap = idMap;
+	}
+	@Override
+	public void moveMobs(int xMax, int yMax, IModel boulderDashModel) {
+		System.out.println("Mob1");
+		IAlive[][] alive = boulderDashModel.getAlive();
+		ITile[][] tile = boulderDashModel.getTile();
+		IBlock[][] block = boulderDashModel.getBlock();
+		 for (int j = 0; j < yMax; j++){
+				for (int i = 0; i < xMax; i++){
+					if(alive[i][j] != null && alive[i][j] instanceof Mob1){
+						Random rand = new Random();
+						 int randomNum = rand.nextInt((3 - 0) + 3) + 0;
+						 switch(randomNum){
+						 case 0 : // UP
+							 if(tile[i][j-1] == null && block[i][j-1] == null){
+							 if (alive[i][j-1] != null && alive[i][j-1] instanceof Player){
+									alive[i][j-1].setAlive(false);
+									alive[i][j-1].explodes(i, j-1, tile, block, alive);
+									this.setAlive(false);
+									alive[i][j-1] = null;
+									boulderDashModel.setAliveTab(alive);
+									boulderDashModel.notifyObservers();
+								 } else {
+									 alive[i][j-1] = new Mob1(3);
+									 alive[i][j] = null; 
+								 }
+							 } 
+							break;
+						 case 1 : // DOWN
+							 if(tile[i][j+1] == null && block[i][j+1] == null){
+								 if (alive[i][j+1] != null && alive[i][j+1] instanceof Player){
+									 alive[i][j+1].setAlive(false);
+										alive[i][j+1].explodes(i, j+1, tile, block, alive);
+										this.setAlive(false);
+										alive[i][j+1] = null;
+										boulderDashModel.setAliveTab(alive);
+										boulderDashModel.notifyObservers();
+								 } else {
+									 alive[i][j+1] = new Mob1(3);
+									 alive[i][j] = null;
+								 }
+							 } 
+							break;
+						 case 2 : // LEFT
+							 if(tile[i-1][j] == null && block[i-1][j] == null){
+								 if (alive[i-1][j] != null && alive[i-1][j] instanceof Player){
+									 alive[i-1][j].setAlive(false);
+										alive[i-1][j].explodes(i-1, j, tile, block, alive);
+										this.setAlive(false);
+										alive[i-1][j] = null;
+										boulderDashModel.setAliveTab(alive);
+										boulderDashModel.notifyObservers();
+								 } else {
+									 alive[i-1][j] = new Mob1(3);
+									 alive[i][j] = null;
+								 }
+							 } 
+							break;
+						 case 3 : // RIGHT
+							 if(tile[i+1][j] == null && block[i+1][j] == null){
+								 if (alive[i+1][j] != null && alive[i+1][j] instanceof Player){
+									 alive[i+1][j].setAlive(false);
+										alive[i+1][j].explodes(i+1, j, tile, block, alive);
+										this.setAlive(false);
+										alive[i+1][j] = null;
+										boulderDashModel.setAliveTab(alive);
+										boulderDashModel.notifyObservers();
+								 } else {
+									 alive[i+1][j] = new Mob1(3);
+									 alive[i][j] = null;
+								 }
+							 }
+							break;
+						 }
+					}
+				}
+			}
 	}
 }

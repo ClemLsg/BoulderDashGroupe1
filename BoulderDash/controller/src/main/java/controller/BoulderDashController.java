@@ -46,10 +46,11 @@ public class BoulderDashController implements IOrderPerformer, IController{
 			direction = null;
 		}
 		System.out.println(direction);
-		int x = boulderDashModel.getMapXsize(1);
-		int y = boulderDashModel.getMapYsize(1);
+		int x = boulderDashModel.getMapXsize(boulderDashModel.getIdMap());
+		int y = boulderDashModel.getMapYsize(boulderDashModel.getIdMap());
 		boulderDashModel.setDirection(direction);
 		boulderDashModel.move(direction ,x,  y,boulderDashModel);
+		boulderDashModel.moveMobs(x, y, boulderDashModel);
 		Thread thr = new Thread(){
 			private IAlive[][] alives;
 			private ITile[][] tile;

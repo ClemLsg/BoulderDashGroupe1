@@ -20,4 +20,5 @@ public interface IAlive {
 	void setTiles(ITile[][] tiles);
 	void setBlock(IBlock[][] block);
 	void explodes(int x, int y, ITile[][] tile, IBlock[][] block, IAlive[][] alive);
+	void moveMobs(int xMax, int yMax, IModel boulderDashModel);
 }

@@ -28,7 +28,7 @@ public class BoulderDashView implements IView, Runnable{
 		//JOptionPane.showMessageDialog(null, "test de méthode");
 		
 		graphicsBuilder = new GraphicsBuilder(boulderDashModel);
-		GameFrame frame = new GameFrame("Boulder Dash", boulderDashModel.getMapXsize(1)*32,(boulderDashModel.getMapYsize(1)+1)*32, eventPerformer, graphicsBuilder, boulderDashModel);
+		GameFrame frame = new GameFrame("Boulder Dash", boulderDashModel.getMapXsize(boulderDashModel.getIdMap())*32,(boulderDashModel.getMapYsize(boulderDashModel.getIdMap())+1)*32, eventPerformer, graphicsBuilder, boulderDashModel);
 		
 	}
 	

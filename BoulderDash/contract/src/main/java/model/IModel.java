@@ -20,4 +20,5 @@ public interface IModel extends IBlock, IAlive, ITile {
 	void setHasWon(boolean hasWon);
 	int getMapDiamonds();
 	ImageIcon getLogo();
+	int getIdMap();
 }
